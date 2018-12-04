@@ -159,15 +159,15 @@ public abstract class Actor : TrueSyncBehaviour
                 //pengzhuanfaxiangliang2.transform.rotation = TSQuaternion.LookRotation(Angle).ToQuaternion();
                 //pengzhuanfaxiangliang1.transform.rotation = TSQuaternion.LookRotation(new TSVector(-z, FP.Zero, x)).ToQuaternion();
                 //pengzhuanfaxiangliang3.transform.rotation = TSQuaternion.LookRotation(AngleOnNormal).ToQuaternion();
-                FP AngleAndDiff = TSVector2.Angle(new TSVector2(Angle.x, Angle.z), new TSVector2(diff.x, diff.z));
+                FP AngleAndDiff = TSVector2.Angle(new TSVector2(AngleOnNormal.x, AngleOnNormal.z), new TSVector2(diff.x, diff.z));
                 //Debug.LogErrorFormat("夹角度{0},控制轮盘的投影{1},控制轮盘{2},Actor与碰撞点向量{3}", AngleAndDiff, AngleOnNormal.ToString(), Angle.ToString(), diff.ToString());
                 //Debug.LogErrorFormat("Actor====>Angle==>{0}", TSVector2.Angle(new TSVector2(Angle.x, Angle.z), new TSVector2(item.Value.contacts[0].normal.x, item.Value.contacts[0].normal.z)));
                 if (AngleAndDiff < 90)
                 {
                     AngleOnNormal = TSVector.Project(AngleOnNormal, new TSVector(-item.Value.contacts[0].normal.z, FP.Zero, item.Value.contacts[0].normal.x));
-                    Angle = AngleOnNormal;//让控制轮盘方向变成修正后的方向AngleOnNormal
+                    //TmpAngle = AngleOnNormal;//让控制轮盘方向变成修正后的方向AngleOnNormal
                 }else{
-                    AngleOnNormal = Angle;//new TSVector(Angle.x, FP.Zero, Angle.z);
+                    //AngleOnNormal = TmpAngle;//new TSVector(Angle.x, FP.Zero, Angle.z);
                 }
                 /***
                 if (diff.magnitude < (FP)0.9) {
