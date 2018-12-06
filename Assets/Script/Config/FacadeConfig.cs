@@ -15,5 +15,7 @@ public class FacadeConfig
     public static string ChildSystem_TcpSend = "TcpSend";
     public static string ChildSystem_TcpSocket = "TcpSocket";
 
+    public static string ChildSystem_DaoBiao = "DaoBiao";
+
     public static string ChildSystem_HUDFPS = "HUDFPS";  
 }

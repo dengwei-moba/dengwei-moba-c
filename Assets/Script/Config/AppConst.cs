@@ -61,5 +61,6 @@ public class AppConst
     #region 资源路径配置
     public static string mHeroPath = "prefab/hero/";
     public static string mScene_Path = "scene/";
+    public static string mDaoBiao_Path = "daobiao/binarydata/";
     #endregion 资源路径配置
 }

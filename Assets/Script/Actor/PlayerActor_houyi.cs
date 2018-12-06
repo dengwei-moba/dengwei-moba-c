@@ -6,7 +6,7 @@ using UnityEngine;
 using Google.Protobuf;
 using TrueSync;
 
-public class GameState_Skill_1_houyi : ActorGameState
+public class GameState_Skill_1_houyi : ActorState
 {
     private Actor mActor;
 
@@ -28,16 +28,15 @@ public class GameState_Skill_1_houyi : ActorGameState
         mActor = param[0] as Actor;
         if (mActor != null && mActor.ActorObj != null)
         {
-            Animation animation = mActor.ActorObj.GetComponent<Animation>();
-            if (animation != null)
+            if (mActor.ActorAnimation != null)
             {
-                animation.wrapMode = WrapMode.Loop;
-                animation.Play("skill2");
+                mActor.ActorAnimation.wrapMode = WrapMode.Loop;
+                mActor.ActorAnimation.Play("skill2");
             }
         }
     }
 
-    public override void Exit()
+    public override void Exit(ActorState NextGameState)
     {
         mActor = null;
     }

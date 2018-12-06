@@ -29,6 +29,8 @@ public class Facade : MonoBehaviour
         AddManager(FacadeConfig.ChildSystem_TcpRecive, gameObject.AddComponent<TcpReciveManager>());
         AddManager(FacadeConfig.ChildSystem_TcpSend, gameObject.AddComponent<TcpSendManager>());
 
+        AddManager(FacadeConfig.ChildSystem_DaoBiao, gameObject.AddComponent<DaoBiaoManager>());
+
         AddManager(FacadeConfig.ChildSystem_HUDFPS, gameObject.AddComponent<HUDFPS>());
     }
 

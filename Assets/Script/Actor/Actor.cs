@@ -5,15 +5,65 @@ using LitJson;
 using Google.Protobuf;
 using TrueSync;
 
+public class ActorAttr
+{
+    public FP Speed { set; get; }
+    private FP _hp;
+    public FP Hp { 
+        set
+        {
+            if (value>HpMax) 
+                _hp = HpMax;
+            else
+                _hp = value;
+        }
+        get {
+            return _hp;
+        }
+    }
+    private FP _hpmax;
+    public FP HpMax
+    {
+        set
+        {
+            if (_hpmax > value)
+            {
+                _hp += value - _hpmax;
+                _hpmax = value;
+            }
+            else if (_hpmax < value)
+            {
+                _hpmax = value;
+                if (_hp > _hpmax)
+                    _hp = _hpmax;
+            }
+        }
+        get
+        {
+            return _hpmax;
+        }
+    }
+}
+
 public abstract class Actor : TrueSyncBehaviour
 {
     public bool IsETCControl { set; get; }
 
-    protected ActorGameState CurState { set; get; }
+    /// <summary>
+    /// 这个Actor身上所有的属性
+    /// </summary>
+    public ActorAttr mActorAttr = new ActorAttr();
+
+    /// <summary>
+    /// 这个Actor身上所有的Buff
+    /// </summary>
+    public ActorBuffManager mActorBuffManager = new ActorBuffManager();
+
+    protected ActorState CurState { set; get; }
     /// <summary>
     /// 所有的状态
     /// </summary>
-    protected Dictionary<ActorStateType, ActorGameState> mStateMachineDic = new Dictionary<ActorStateType, ActorGameState>();
+    protected Dictionary<ActorStateType, ActorState> mStateMachineDic = new Dictionary<ActorStateType, ActorState>();
     /// <summary>
     /// 限制状态跳转字典
     /// </summary>
@@ -54,14 +104,14 @@ public abstract class Actor : TrueSyncBehaviour
             return;
         else
         {
-            ActorGameState mState = null;
+            ActorState mState = null;
             if (mStateMachineDic.TryGetValue(tStateType, out mState))
             {
                 List<ActorStateType> shieldList = null;
                 if (mTransShieldDic.TryGetValue(CurState.StateType, out shieldList))
                     if (shieldList.Contains(tStateType))
                         return;
-                CurState.Exit();
+                CurState.Exit(mState);
                 CurState = mState;
                 CurState.Enter(this, param);
             }
@@ -81,6 +131,35 @@ public abstract class Actor : TrueSyncBehaviour
             if (mActorObj == null)
                 mActorObj = transform.Find("rotate/actor").gameObject;
             return mActorObj;
+        }
+    }
+
+    /***
+    private Animator mActorAnimator;
+    /// <summary>
+    /// 动画状态机控件(多个动画之间相互切换，并且有一个动画控制器，俗称动画状态机)
+    /// </summary>
+    public Animator ActorAnimator
+    {
+        get
+        {
+            if (mActorAnimator == null)
+                mActorAnimator = ActorObj.GetComponent<Animator>();
+            return mActorAnimator;
+        }
+    }
+    ***/
+    private Animation mActorAnimation;
+    /// <summary>
+    /// 动画播放控件(控制一个动画的播放)
+    /// </summary>
+    public Animation ActorAnimation
+    {
+        get
+        {
+            if (mActorAnimation == null)
+                mActorAnimation = ActorObj.GetComponent<Animation>();
+            return mActorAnimation;
         }
     }
 
@@ -128,6 +207,7 @@ public abstract class Actor : TrueSyncBehaviour
     {
         if (CurState != null)
             CurState.OnUpdate();
+        mActorBuffManager.OnUpdate();
         AllTSTransform.OnUpdate();
         RotateTSTransform.OnUpdate();
     }
@@ -135,7 +215,16 @@ public abstract class Actor : TrueSyncBehaviour
     #region 位置相关
     public bool IsMove { get; set; }
 
-    public FP Speed { set; get; }
+    public FP Speed { 
+        set
+        {
+            mActorAttr.Speed = value;
+        }
+        get 
+        {
+            return mActorAttr.Speed;
+        }
+    }
 
     public TSVector Angle { set; get; }
 
@@ -187,7 +276,9 @@ public abstract class Actor : TrueSyncBehaviour
             AllTSTransform.Translate(Angle * Speed);
         }
     }
+    #endregion 位置相关
 
+    #region 技能操作相关
     public virtual void Skill_1()
     {
     }
@@ -200,8 +291,7 @@ public abstract class Actor : TrueSyncBehaviour
     public virtual void Skill_4()
     {
     }
-
-    #endregion 位置相关
+    #endregion 技能操作相关
 
     #region TrueSyncBehaviour操作相关
     public override void OnSyncedStart()

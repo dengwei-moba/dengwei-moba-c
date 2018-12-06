@@ -5,7 +5,7 @@ using LitJson;
 using UnityEngine;
 using Google.Protobuf;
 
-public class GameState_Skill_1_yanse : ActorGameState
+public class GameState_Skill_1_yanse : ActorState
 {
     private Actor mActor;
 
@@ -27,16 +27,15 @@ public class GameState_Skill_1_yanse : ActorGameState
         mActor = param[0] as Actor;
         if (mActor != null && mActor.ActorObj != null)
         {
-            Animation animation = mActor.ActorObj.GetComponent<Animation>();
-            if (animation != null)
+            if (mActor.ActorAnimation != null)
             {
-                animation.wrapMode = WrapMode.Loop;
-                animation.Play("skill2");
+                mActor.ActorAnimation.wrapMode = WrapMode.Loop;
+                mActor.ActorAnimation.Play("skill2");
             }
         }
     }
 
-    public override void Exit()
+    public override void Exit(ActorState NextGameState)
     {
         mActor = null;
     }

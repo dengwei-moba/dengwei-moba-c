@@ -94,6 +94,17 @@ public class ScriptBase : MonoBehaviour
         }
     }
 
+    private DaoBiaoManager mDaoBiaoManager;
+    protected DaoBiaoManager _DaoBiaoManager
+    {
+        get
+        {
+            if (mDaoBiaoManager == null)
+                mDaoBiaoManager = Facade.Instance.GetManager<DaoBiaoManager>(FacadeConfig.ChildSystem_DaoBiao);
+            return mDaoBiaoManager;
+        }
+    }
+
     private HUDFPS mHUDFPS;
     protected HUDFPS _HUDFPS
     {

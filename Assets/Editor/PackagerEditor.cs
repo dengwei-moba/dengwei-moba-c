@@ -15,7 +15,7 @@ public class PackagerEditor : EditorWindow
 
     //允许打包的文件类型
     private static List<string> fileExtList = new List<string>
-    { "prefab", "png", "jpg", "json", "txt", "mat", "shader", "ttf", "fnt", "tga", "psd", "renderTexture" };
+    { "prefab", "png", "jpg", "json", "txt", "mat", "shader", "ttf", "fnt", "tga", "psd", "renderTexture","bytes" };
 
     private static BuildTarget bt = BuildTarget.StandaloneWindows;
 
