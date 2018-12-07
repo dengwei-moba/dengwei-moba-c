@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 2090197894
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e65f3e34e50ee165ccd1606294ffca01
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8e7279dade4fc4dede8dbe0a374ea100
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: df3e4ecc2c78eaa409dad488c230d65d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Bullet/pengzhuanweizhi.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/hero/houyi/hero_houyi_mat

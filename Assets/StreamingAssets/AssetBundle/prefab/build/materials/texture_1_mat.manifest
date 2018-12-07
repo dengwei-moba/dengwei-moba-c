@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2013135065
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 150801c2b2be64cfa0df38ea5bfb6bd8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 60a7cae25bfd71c49bd2c87b5187f6b5
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Build/Materials/texture_1.mat
+Dependencies: []

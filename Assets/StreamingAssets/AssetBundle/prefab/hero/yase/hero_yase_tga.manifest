@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2507875044
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1f728337df3c1002851577b720d01343
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Hero/yase/hero_yase.tga
+Dependencies: []

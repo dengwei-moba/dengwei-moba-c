@@ -60,6 +60,8 @@ public class PlayerActor_yase : PlayerActor
 
     public override void Skill_1()  //超速移动
     {
-        AllTSTransform.Translate(Angle * Speed * 2);
+        //AllTSTransform.Translate(Angle * Speed * 2);
+        //this.Move();
+        mActorBuffManager.DoBuff(this,10002);
     }
 }

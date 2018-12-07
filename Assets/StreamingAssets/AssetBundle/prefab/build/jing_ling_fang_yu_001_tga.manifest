@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 144804573
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b9342e82e217f018b5cd844c17e1416c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Build/jing_ling_fang_yu_001.tga
+Dependencies: []

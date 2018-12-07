@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3657164763
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3b17e54db4d88f41acbf8a772399d498
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Hero/houyi/hero_houyi.tga
+Dependencies: []

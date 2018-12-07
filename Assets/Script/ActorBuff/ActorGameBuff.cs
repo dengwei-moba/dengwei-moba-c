@@ -193,6 +193,10 @@ public class ActorBuff
     [SerializeField]
     private int index = 0;
     /// <summary>
+    /// 用来寄存实际增减的数值
+    /// </summary>
+    public FP TempNum;
+    /// <summary>
     /// 根据 CallIntervalFrame 间隔 调用 结束时会调用一次 会传递 Data数据
     /// </summary>
     public Action<object> OnCallBackParam;
@@ -233,6 +237,11 @@ public class ActorBuff
     public Action OnFinsh;
     [SerializeField]
     private bool _isFinsh;
+
+    /// <summary>
+    /// 记录本buff生成的各类特效Obj
+    /// </summary>
+    public GameObject EffectObject;
 
     /// <summary>
     /// 构造方法

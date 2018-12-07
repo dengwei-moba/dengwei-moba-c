@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Reflection;
-using Game;
+using TrueSync;
 
 
 public interface IRofBase
@@ -114,7 +114,7 @@ public class DaoBiaoManager : ScriptBase
         Debug.Log("===>" + obj_name);
         UnityEngine.TextAsset assetObj = (UnityEngine.TextAsset)mDaoBiaoBundle.LoadAsset(obj_name);
         RofBuffTable = new RofTable<RofBuffRow>(assetObj.bytes);
-        Debug.Log("===>" + RofBuffTable.GetDataByID(10001).Name);
+        Debug.Log("===>" + RofBuffTable.GetDataByID(10001).Num);
         yield return null;
     }
 }

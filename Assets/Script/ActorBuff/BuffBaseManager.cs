@@ -4,19 +4,31 @@ using System.Collections.Generic;
 using TrueSync;
 
 //用来配置buff属性(还没有做读取导表,面板上直接配置)
-public class BuffBaseManager : MonoBehaviour {
+public class BuffBaseManager : ScriptBase
+{
+    [SerializeField]
+    private Dictionary<int, BuffBase> _BuffBaseDict = new Dictionary<int,BuffBase>();
 
     private static BuffBaseManager _instance;
     public static BuffBaseManager Instance
     {
         get { return _instance; }
     }
-
-    public List<BuffBase> mBuffBaseList = new List<BuffBase>();
-
     void Awake()
     {
         _instance = this;
+    }
+
+    void Start()
+    {
+        //从导表数据中初始化
+        int iRowNum = _DaoBiaoManager.RofBuffTable.RowNum;
+        for (int i = 1; i <= iRowNum; i++)
+        {
+            RofBuffRow mRofBuffRow = _DaoBiaoManager.RofBuffTable.GetDataByRow(i);
+            if (mRofBuffRow!=null)
+                _BuffBaseDict[mRofBuffRow.ID] = new BuffBase(mRofBuffRow);
+        }
     }
 
     /// <summary>
@@ -24,9 +36,9 @@ public class BuffBaseManager : MonoBehaviour {
     /// </summary>
     /// <param name="actor"></param>
     /// <param name="buffID"></param>
-    public void DoBuff(Actor actor,int buffID)
+    public void DoBuff(Actor mActor, int buffID)
     {
-        DoBuff(actor,GetBuffBase(buffID));
+        DoBuff(mActor, GetBuffBase(buffID));
     }
 
     /// <summary>
@@ -39,6 +51,7 @@ public class BuffBaseManager : MonoBehaviour {
         if (buffBase == null) return;
         ActorBuff db = null;
 
+        Debug.Log("DoBuff===>BuffID:" + buffBase.BuffID + ",buffEffectType:" + buffBase.buffEffectType);
         switch (buffBase.buffEffectType)
         {
             case BuffEffectType.AddHp: //增加血量
@@ -92,13 +105,25 @@ public class BuffBaseManager : MonoBehaviour {
                 if (!IsAdd(mActor, buffBase))
                 {
                     db = ActorBuff.Create(buffBase, null);
+                    db.TempNum = mActor.Speed*buffBase.Num/100;//增减数值是百分比
                     db.OnStart = delegate
                     {
-                        mActor.Speed += buffBase.Num;
+                        Debug.Log("AddSpeed===>OnStart>Speed:" + mActor.Speed + "==>TempNum:" + db.TempNum);
+                        mActor.Speed += db.TempNum;
+                        if (buffBase.Effect != null) {
+                            db.EffectObject = _AssetManager.GetGameObject("prefab/effect/" + buffBase.Effect + "/" + buffBase.Effect + "_prefab");
+                            //Effect.name = "Effect_" + buffBase.BuffID;
+                            db.EffectObject.transform.position = mActor.AllTSTransform.position.ToVector();
+                            db.EffectObject.transform.SetParent(mActor.ActorObj.transform);
+                        }
                     };
                     db.OnFinsh = delegate
                     {
-                        mActor.Speed -= buffBase.Num;
+                        Debug.Log("AddSpeed===>OnFinsh>Speed:" + mActor.Speed + "==>TempNum:" + db.TempNum);
+                        mActor.Speed -= db.TempNum;
+                        //GameObject Effect = mActor.ActorObj.transform.FindChild("Effect_" + buffBase.BuffID).gameObject;
+                        Destroy(db.EffectObject); 
+                        _AssetManager.UnLoadUnUseAsset("prefab/effect/" + buffBase.Effect + "/" + buffBase.Effect + "_prefab");
                     };
                 }
                 break;
@@ -140,6 +165,7 @@ public class BuffBaseManager : MonoBehaviour {
         ActorBuff oldBuff = mActor.mActorBuffManager.GetBuffByBaseID(buffBase.BuffID);
         if (oldBuff != null)
         {
+            Debug.Log("IsAdd===>BuffID:" + buffBase.BuffID + ",叠加类型:" + buffBase.buffOverlapType);
             switch (buffBase.buffOverlapType)
             {
                 case BuffOverlapType.ResetTime:
@@ -166,11 +192,8 @@ public class BuffBaseManager : MonoBehaviour {
     /// <returns></returns>
     public BuffBase GetBuffBase(int buffID)
     {
-        for (int i = 0; i < mBuffBaseList.Count; i++)
-        {
-            if (mBuffBaseList[i].BuffID == buffID)
-                return mBuffBaseList[i];
-        }
+        if (_BuffBaseDict.ContainsKey(buffID))
+            return _BuffBaseDict[buffID];
         return null;
     }
 }
@@ -183,36 +206,36 @@ public enum BuffEffectType
     /// <summary>
     /// 恢复HP
     /// </summary>
-    AddHp,
+    AddHp=1,
     /// <summary>
     /// 增加最大血量
     /// </summary>
-    AddMaxHp,
+    AddMaxHp=2,
     /// <summary>
     /// 减血
     /// </summary>
-    SubHp,
+    SubHp=3,
     /// <summary>
     /// 减最大生命值
     /// </summary>
-    SubMaxHp,
+    SubMaxHp=4,
     /// <summary>
     /// 加速
     /// </summary>
-    AddSpeed,
+    AddSpeed=5,
 
     /// <summary>
     /// 眩晕
     /// </summary>
-    AddVertigo,
+    AddVertigo=6,
     /// <summary>
     /// 被击浮空
     /// </summary>
-    AddFloated,
+    AddFloated=7,
     /// <summary>
     /// 被击浮空
     /// </summary>
-    AddDamageFloated,
+    AddDamageFloated=8,
 }
 
 /// <summary>
@@ -220,19 +243,19 @@ public enum BuffEffectType
 /// </summary>
 public enum BuffOverlapType
 {
-    None,
+    None=1,
     /// <summary>
     /// 增加时间
     /// </summary>
-    AddTime,
+    AddTime=2,
     /// <summary>
     /// 堆叠层数
     /// </summary>
-    AddLayer,
+    AddLayer=3,
     /// <summary>
     /// 重置时间
     /// </summary>
-    ResetTime,
+    ResetTime=4,
 }
 
 /// <summary>
@@ -243,11 +266,11 @@ public enum BuffShutDownType
     /// <summary>
     /// 关闭所有
     /// </summary>
-    All,
+    All=1,
     /// <summary>
     /// 单层关闭
     /// </summary>
-    Layer,
+    Layer=2,
 }
 
 /// <summary>
@@ -258,11 +281,11 @@ public enum BuffRepeatType
     /// <summary>
     /// 一次
     /// </summary>
-    Once,
+    Once=1,
     /// <summary>
     /// 每次
     /// </summary>
-    Loop,
+    Loop=2,
 }
 
 [System.Serializable]
@@ -272,6 +295,10 @@ public class BuffBase       //配置类，这个类用来实现加载buff的配�
     /// BuffID
     /// </summary>
     public int BuffID;
+    /// <summary>
+    /// Buff名称
+    /// </summary>
+    public string BuffName;
     /// <summary>
     /// Buff效果类型
     /// </summary>
@@ -304,4 +331,23 @@ public class BuffBase       //配置类，这个类用来实现加载buff的配�
     /// 执行数值 比如加血就是每次加多少
     /// </summary>
     public FP Num;
+    /// <summary>
+    /// 特效名称
+    /// </summary>
+    public string Effect;
+
+    public BuffBase(RofBuffRow mRofBuffRow)
+    {
+        BuffID = mRofBuffRow.ID;
+        BuffName = mRofBuffRow.BuffName;
+        buffEffectType = (BuffEffectType)mRofBuffRow.BuffEffectType;
+        buffRepeatType = (BuffRepeatType)mRofBuffRow.BuffRepeatType;
+        buffOverlapType = (BuffOverlapType)mRofBuffRow.BuffOverlapType;
+        buffShutDownType = (BuffShutDownType)mRofBuffRow.BuffShutDownType;
+        MaxLimit = mRofBuffRow.MaxLimit;
+        TotalFrame = mRofBuffRow.TotalFrame;
+        CallIntervalFrame = mRofBuffRow.CallIntervalFrame;
+        Num = mRofBuffRow.Num;
+        Effect = mRofBuffRow.Effect;
+    }
 }
