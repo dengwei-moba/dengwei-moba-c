@@ -6,12 +6,31 @@ using UnityEngine;
 using Google.Protobuf;
 using TrueSync;
 
+/// <summary>
+/// 技能按钮操控类型
+/// </summary>
+public enum SkillControlType
+{
+    Button_KeyDown = 1,         //点击按钮操控:当按钮按下时候施放
+    Button_KeyUp = 2,           //点击按钮操控:当按钮松开时候施放(满足松开范围)
+    Joy_Angle = 4,              //通过摇杆选择的角度操控
+    Joy_XY = 8,                 //通过摇杆选择地图上某个坐标操控
+}
+
 public class PlayerActor : Actor
 {
-    ETCJoystick joy;
+    ETCJoystick joy_move;
+    protected SkillControlType SkillControlType_1 = SkillControlType.Joy_Angle;
+    ETCJoystick joy_skill_1;
     ETCButton button_1;
+    protected SkillControlType SkillControlType_2 = SkillControlType.Joy_Angle;
+    ETCJoystick joy_skill_2;
     ETCButton button_2;
+    protected SkillControlType SkillControlType_3 = SkillControlType.Joy_Angle;
+    ETCJoystick joy_skill_3;
     ETCButton button_3;
+    protected SkillControlType SkillControlType_4 = SkillControlType.Button_KeyUp;
+    //ETCJoystick joy_skill_4;
     ETCButton button_4;
     public GameObject[] WillUsedPrefabs; 
 
@@ -92,25 +111,6 @@ public class PlayerActor : Actor
         switch (inputKey)
         {
             case 1:
-                this.TransState(ActorStateType.Idle);
-                break;
-            case 2:
-                this.TransState(ActorStateType.Idle);
-                break;
-            case 3:
-                this.TransState(ActorStateType.Idle);
-                break;
-            case 4:
-                this.TransState(ActorStateType.Idle);
-                break;
-        }
-    }
-
-    public override void PlayerInputHandle_KeyDown(int inputKey)
-    {
-        switch (inputKey)
-        {
-            case 1:
                 this.TransState(ActorStateType.Skill_1);
                 break;
             case 2:
@@ -121,6 +121,25 @@ public class PlayerActor : Actor
                 break;
             case 4:
                 this.TransState(ActorStateType.Skill_4);
+                break;
+        }
+    }
+
+    public override void PlayerInputHandle_KeyDown(int inputKey)
+    {
+        switch (inputKey)
+        {
+            case 1:
+                this.TransState(ActorStateType.Idle);
+                break;
+            case 2:
+                this.TransState(ActorStateType.Idle);
+                break;
+            case 3:
+                this.TransState(ActorStateType.Idle);
+                break;
+            case 4:
+                this.TransState(ActorStateType.Idle);
                 break;
         }
     }
@@ -145,36 +164,135 @@ public class PlayerActor : Actor
             return;
         }
         mCamera.enabled = true;
-        joy = GameObject.FindObjectOfType<ETCJoystick>();
+        joy_move = GameObject.Find("Joystick_move").GetComponent<ETCJoystick>();
+        joy_skill_1 = GameObject.Find("Joystick_skill_1").GetComponent<ETCJoystick>();
         button_1 = GameObject.Find("ETCButton_1").GetComponent<ETCButton>();
+        joy_skill_2 = GameObject.Find("Joystick_skill_2").GetComponent<ETCJoystick>();
         button_2 = GameObject.Find("ETCButton_2").GetComponent<ETCButton>();
+        joy_skill_3 = GameObject.Find("Joystick_skill_3").GetComponent<ETCJoystick>();
         button_3 = GameObject.Find("ETCButton_3").GetComponent<ETCButton>();
+        //joy_skill_4 = GameObject.Find("Joystick_skill_4").GetComponent<ETCJoystick>();
         button_4 = GameObject.Find("ETCButton_4").GetComponent<ETCButton>();
-        if (joy != null)
+        if (joy_move != null)
         {
-            joy.onMoveStart.AddListener(StartMoveCallBack);
-            joy.onMove.AddListener(MoveCallBack);
-            joy.onMoveEnd.AddListener(EndMoveCallBack);
+            joy_move.onMoveStart.AddListener(StartMoveCallBack);
+            joy_move.onMove.AddListener(MoveCallBack);
+            joy_move.onMoveEnd.AddListener(EndMoveCallBack);
         }
         if (button_1 != null)
         {
-            button_1.onUp.AddListener(onUp_Skill_1);
-            button_1.onDown.AddListener(onDown_Skill_1);
+            switch (SkillControlType_1)
+            {
+                case SkillControlType.Button_KeyDown:
+                case SkillControlType.Button_KeyUp://操作上都生效,网络不一定都发送
+                    joy_skill_1.activated = false;
+                    button_1.activated = true;
+                    button_1.onUp.AddListener(onUp_Skill_1);
+                    button_1.onDown.AddListener(onDown_Skill_1);
+                    break;
+                case SkillControlType.Joy_Angle:
+                    button_1.activated = false;
+                    button_1.visible = false;
+                    joy_skill_1.activated = true;
+                    joy_skill_1.onMoveStart.AddListener(StartMoveCallBack_Skill_1);
+                    joy_skill_1.onMove.AddListener(MoveCallBack_Skill_1);
+                    joy_skill_1.onMoveEnd.AddListener(EndMoveCallBack_Skill_1);
+                    break;
+                case SkillControlType.Joy_XY:
+                    button_1.activated = false;
+                    button_1.visible = false;
+                    joy_skill_1.activated = true;
+                    joy_skill_1.activated = true;
+                    joy_skill_1.onMoveStart.AddListener(StartMoveCallBack_Skill_1);
+                    joy_skill_1.onMove.AddListener(MoveCallBack_Skill_1);
+                    joy_skill_1.onMoveEnd.AddListener(EndMoveCallBack_Skill_1);
+                    break;
+            }
         }
         if (button_2 != null)
         {
-            button_2.onUp.AddListener(onUp_Skill_2);
-            button_2.onDown.AddListener(onDown_Skill_2);
+            switch (SkillControlType_2)
+            {
+                case SkillControlType.Button_KeyDown:
+                case SkillControlType.Button_KeyUp:
+                    joy_skill_2.activated = false;
+                    button_2.activated = true;
+                    button_2.onUp.AddListener(onUp_Skill_2);
+                    button_2.onDown.AddListener(onDown_Skill_2);
+                    break;
+                case SkillControlType.Joy_Angle:
+                    button_2.activated = false;
+                    button_2.visible = false;
+                    joy_skill_2.activated = true;
+                    joy_skill_2.onMoveStart.AddListener(StartMoveCallBack_Skill_2);
+                    joy_skill_2.onMove.AddListener(MoveCallBack_Skill_2);
+                    joy_skill_2.onMoveEnd.AddListener(EndMoveCallBack_Skill_2);
+                    break;
+                case SkillControlType.Joy_XY:
+                    button_2.activated = false;
+                    button_2.visible = false;
+                    joy_skill_2.activated = true;
+                    joy_skill_2.onMoveStart.AddListener(StartMoveCallBack_Skill_2);
+                    joy_skill_2.onMove.AddListener(MoveCallBack_Skill_2);
+                    joy_skill_2.onMoveEnd.AddListener(EndMoveCallBack_Skill_2);
+                    break;
+            }
         }
         if (button_3 != null)
         {
-            button_3.onUp.AddListener(onUp_Skill_3);
-            button_3.onDown.AddListener(onDown_Skill_3);
+            switch (SkillControlType_3)
+            {
+                case SkillControlType.Button_KeyDown:
+                case SkillControlType.Button_KeyUp:
+                    joy_skill_3.activated = false;
+                    button_3.activated = true;
+                    button_3.onUp.AddListener(onUp_Skill_3);
+                    button_3.onDown.AddListener(onDown_Skill_3);
+                    break;
+                case SkillControlType.Joy_Angle:
+                    button_3.activated = false;
+                    button_3.visible = false;
+                    joy_skill_3.activated = true;
+                    joy_skill_3.onMoveStart.AddListener(StartMoveCallBack_Skill_3);
+                    joy_skill_3.onMove.AddListener(MoveCallBack_Skill_3);
+                    joy_skill_3.onMoveEnd.AddListener(EndMoveCallBack_Skill_3);
+                    break;
+                case SkillControlType.Joy_XY:
+                    button_3.activated = false;
+                    button_3.visible = false;
+                    joy_skill_3.activated = true;
+                    joy_skill_3.onMoveStart.AddListener(StartMoveCallBack_Skill_3);
+                    joy_skill_3.onMove.AddListener(MoveCallBack_Skill_3);
+                    joy_skill_3.onMoveEnd.AddListener(EndMoveCallBack_Skill_3);
+                    break;
+            }
         }
         if (button_4 != null)
         {
-            button_4.onUp.AddListener(onUp_Skill_4);
-            button_4.onDown.AddListener(onDown_Skill_4);
+            switch (SkillControlType_4)
+            {
+                case SkillControlType.Button_KeyDown:
+                case SkillControlType.Button_KeyUp:
+                    //joy_skill_4.activated = false;
+                    button_4.activated = true;
+                    button_4.onUp.AddListener(onUp_Skill_4);
+                    button_4.onDown.AddListener(onDown_Skill_4);
+                    break;
+                case SkillControlType.Joy_Angle:
+                    button_4.activated = false;
+                    //joy_skill_4.activated = true;
+                    //joy_skill_4.onMoveStart.AddListener(StartMoveCallBack_Skill_4);
+                    //joy_skill_4.onMove.AddListener(MoveCallBack_Skill_4);
+                    //joy_skill_4.onMoveEnd.AddListener(EndMoveCallBack_Skill_4);
+                    break;
+                case SkillControlType.Joy_XY:
+                    button_4.activated = false;
+                    //joy_skill_4.activated = true;
+                    //joy_skill_4.onMoveStart.AddListener(StartMoveCallBack_Skill_4);
+                    //joy_skill_4.onMove.AddListener(MoveCallBack_Skill_4);
+                    //joy_skill_4.onMoveEnd.AddListener(EndMoveCallBack_Skill_4);
+                    break;
+            }
         }
                 
     }
@@ -208,51 +326,110 @@ public class PlayerActor : Actor
     {
         _UdpSendManager.SendEndMove();
     }
-
+    //===========================================================================
     void onUp_Skill_1()
     {
-        _UdpSendManager.SendInputSkill(1, InputType.KeyUp);
+        Debug.LogErrorFormat("onUp_Skill_1==========>{0}", SkillControlType_1);
+        if (SkillControlType_1 == SkillControlType.Button_KeyUp)
+            _UdpSendManager.SendInputSkill(1, InputType.KeyUp);
     }
     void onDown_Skill_1()
     {
-        _UdpSendManager.SendInputSkill(1, InputType.KeyDown);
+        Debug.LogErrorFormat("onDown_Skill_1==========>{0}", SkillControlType_1);
+        if (SkillControlType_1 == SkillControlType.Button_KeyDown)
+            _UdpSendManager.SendInputSkill(1, InputType.KeyDown);
     }
-    
+    void StartMoveCallBack_Skill_1()
+    {
+        Debug.LogErrorFormat("StartMoveCallBack_Skill_1==========>");
+    }
+    void MoveCallBack_Skill_1(Vector2 tVec2)
+    {
+        Debug.LogErrorFormat("MoveCallBack_Skill_1==========>{0}", tVec2);
+        pengzhuanfaxiangliang1.transform.rotation = TSQuaternion.LookRotation(new TSVector(tVec2.x, 0, tVec2.y)).ToQuaternion();
+    }
+    void EndMoveCallBack_Skill_1()
+    {
+        Debug.LogErrorFormat("EndMoveCallBack_Skill_1==========>");
+    }
+    //===========================================================================
     void onUp_Skill_2()
     {
-        _UdpSendManager.SendInputSkill(2, InputType.KeyUp);
+        if (SkillControlType_2 == SkillControlType.Button_KeyUp)
+            _UdpSendManager.SendInputSkill(2, InputType.KeyUp);
     }
     void onDown_Skill_2()
     {
-        _UdpSendManager.SendInputSkill(2, InputType.KeyDown);
+        if (SkillControlType_2 == SkillControlType.Button_KeyDown)
+            _UdpSendManager.SendInputSkill(2, InputType.KeyDown);
     }
-
+    void StartMoveCallBack_Skill_2()
+    {
+        Debug.LogErrorFormat("StartMoveCallBack_Skill_2==========>");
+    }
+    void MoveCallBack_Skill_2(Vector2 tVec2)
+    {
+        Debug.LogErrorFormat("MoveCallBack_Skill_2==========>{0}", tVec2);
+    }
+    void EndMoveCallBack_Skill_2()
+    {
+        Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>");
+    }
+    //===========================================================================
     void onUp_Skill_3()
     {
-        _UdpSendManager.SendInputSkill(3, InputType.KeyUp);
+        if (SkillControlType_3 == SkillControlType.Button_KeyUp)
+            _UdpSendManager.SendInputSkill(3, InputType.KeyUp);
     }
     void onDown_Skill_3()
     {
-        _UdpSendManager.SendInputSkill(3, InputType.KeyDown);
+        if (SkillControlType_3 == SkillControlType.Button_KeyDown)
+            _UdpSendManager.SendInputSkill(3, InputType.KeyDown);
     }
-
+    void StartMoveCallBack_Skill_3()
+    {
+        Debug.LogErrorFormat("StartMoveCallBack_Skill_3==========>");
+    }
+    void MoveCallBack_Skill_3(Vector2 tVec2)
+    {
+        Debug.LogErrorFormat("MoveCallBack_Skill_3==========>{0}", tVec2);
+    }
+    void EndMoveCallBack_Skill_3()
+    {
+        Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>");
+    }
+    //===========================================================================
     void onUp_Skill_4()
     {
-        _UdpSendManager.SendInputSkill(4, InputType.KeyUp);
+        if (SkillControlType_4 == SkillControlType.Button_KeyUp)
+            _UdpSendManager.SendInputSkill(4, InputType.KeyUp);
     }
     void onDown_Skill_4()
     {
-        _UdpSendManager.SendInputSkill(4, InputType.KeyDown);
+        if (SkillControlType_4 == SkillControlType.Button_KeyDown)
+            _UdpSendManager.SendInputSkill(4, InputType.KeyDown);
     }
-
+    void StartMoveCallBack_Skill_4()
+    {
+        Debug.LogErrorFormat("StartMoveCallBack_Skill_4==========>");
+    }
+    void MoveCallBack_Skill_4(Vector2 tVec2)
+    {
+        Debug.LogErrorFormat("MoveCallBack_Skill_4==========>{0}", tVec2);
+    }
+    void EndMoveCallBack_Skill_4()
+    {
+        Debug.LogErrorFormat("EndMoveCallBack_Skill_4==========>");
+    }
+    //===========================================================================
 
     void OnDestroy()
     {
-        if (joy != null)
+        if (joy_move != null)
         {
-            joy.onMoveStart.RemoveListener(StartMoveCallBack);
-            joy.onMove.RemoveListener(MoveCallBack);
-            joy.onMoveEnd.RemoveListener(EndMoveCallBack);
+            joy_move.onMoveStart.RemoveListener(StartMoveCallBack);
+            joy_move.onMove.RemoveListener(MoveCallBack);
+            joy_move.onMoveEnd.RemoveListener(EndMoveCallBack);
         }
         if (button_1 != null)
         {
