@@ -41,14 +41,23 @@ namespace Werewolf.StatusIndicators.Components {
 		}
 
 		public override void Update() {
+            /***
 			if(Manager != null) {
-				Vector3 v = FlattenVector(Get3DMousePosition()) - Manager.transform.position;
+                Vector3 v = JoystickVector;// FlattenVector(Get3DMousePosition()) - Manager.transform.position;
 				if(v != Vector3.zero) {
 					Manager.transform.rotation = Quaternion.LookRotation(v);
 				}
-				Scale = Mathf.Clamp((Get3DMousePosition() - Manager.transform.position).magnitude, MinimumRange, Range - ArrowHeadDistance()) * 2;
-				ArrowHead.transform.localPosition = new Vector3(0, (Scale * 0.5f) + ArrowHeadDistance() - 0.12f, 0);
+				//Scale = Mathf.Clamp((Get3DMousePosition() - Manager.transform.position).magnitude, MinimumRange, Range - ArrowHeadDistance()) * 2;
+				//ArrowHead.transform.localPosition = new Vector3(0, (Scale * 0.5f) + ArrowHeadDistance() - 0.12f, 0);
 			}
+            ***/
+            Vector3 v = new Vector3(-JoystickVector.x, 90, -JoystickVector.z);
+            if (v != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(v);
+            }
+            Scale = Mathf.Clamp(JoystickVector.magnitude * Range, MinimumRange, Range - ArrowHeadDistance()) * 2;
+            ArrowHead.transform.localPosition = new Vector3(0, (Scale * 0.5f) + ArrowHeadDistance() - 0.12f, 0);
 		}
 
 		public override void OnValueChanged() {

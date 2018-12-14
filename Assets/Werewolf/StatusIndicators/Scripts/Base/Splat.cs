@@ -20,6 +20,8 @@ using Werewolf.StatusIndicators.Services;
 namespace Werewolf.StatusIndicators.Components {
 	public abstract class Splat : MonoBehaviour {
 
+        public Vector3 JoystickVector;
+
 		// Interface
 
 		/// <summary>

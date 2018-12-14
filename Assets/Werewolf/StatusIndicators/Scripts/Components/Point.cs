@@ -39,7 +39,9 @@ namespace Werewolf.StatusIndicators.Components {
 		}
 
 		public override void Update() {
-			transform.position = Get3DMousePosition();
+            transform.position = Manager.transform.position;
+            transform.Translate(new Vector3(JoystickVector.x, JoystickVector.z,0) * range);
+			//transform.position = Get3DMousePosition();
 			if(restrictCursorToRange)
 				RestrictCursorToRange();
 		}

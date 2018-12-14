@@ -56,7 +56,8 @@ namespace Werewolf.StatusIndicators.Components {
 		/// </summary>
 		public RangeIndicator CurrentRangeIndicator { get; private set; }
 
-		void OnEnable() {
+        public void AutoInit()
+        {
 			// Create a list of all the splats available to the manager
 			SpellIndicators = GetComponentsInChildren<SpellIndicator>();
 			StatusIndicators = GetComponentsInChildren<StatusIndicator>();
