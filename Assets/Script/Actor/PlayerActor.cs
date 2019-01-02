@@ -355,9 +355,7 @@ public class PlayerActor : Actor
     //===========================================================================
     void onUp_Skill_1()
     {
-        splatManager.CancelSpellIndicator();
-        splatManager.CancelRangeIndicator();
-        splatManager.CancelStatusIndicator();
+        splatManager.CancelAll();
         Debug.LogErrorFormat("onUp_Skill_1==========>{0}", SkillControlType_1);
         if (SkillControlType_1 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(1, InputType.KeyUp);
@@ -406,9 +404,7 @@ public class PlayerActor : Actor
     void EndMoveCallBack_Skill_2()
     {
         SpellIndicator mCone = splatManager.GetSpellIndicator("Point");
-        splatManager.CancelSpellIndicator();
-        splatManager.CancelRangeIndicator();
-        splatManager.CancelStatusIndicator();
+        splatManager.CancelAll();
         Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>");
     }
     //===========================================================================
@@ -435,17 +431,13 @@ public class PlayerActor : Actor
     }
     void EndMoveCallBack_Skill_3()
     {
-        splatManager.CancelSpellIndicator();
-        splatManager.CancelRangeIndicator();
-        splatManager.CancelStatusIndicator();
+        splatManager.CancelAll();
         Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>");
     }
     //===========================================================================
     void onUp_Skill_4()
     {
-        splatManager.CancelSpellIndicator();
-        splatManager.CancelRangeIndicator();
-        splatManager.CancelStatusIndicator();
+        splatManager.CancelAll();
         if (SkillControlType_4 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(4, InputType.KeyUp);
     }
