@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using TrueSync;
 
 namespace behaviac
 {
@@ -29,7 +30,7 @@ namespace behaviac
 #if BEHAVIAC_NOT_USE_MONOBEHAVIOUR
     public class Agent
 #else
-    public class Agent : UnityEngine.MonoBehaviour
+	public class Agent : TrueSyncBehaviour
 #endif
     {
         #region State

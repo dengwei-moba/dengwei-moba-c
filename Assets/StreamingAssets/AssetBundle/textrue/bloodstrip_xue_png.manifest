@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 499119349
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 24b9da43b7c5be662284bb3a8e874e30
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Textrue/bloodstrip_xue.png
+Dependencies: []

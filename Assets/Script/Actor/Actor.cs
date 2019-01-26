@@ -43,6 +43,7 @@ public class ActorAttr
             return _hpmax;
         }
     }
+	public string Name;
 }
 
 public abstract class Actor : TrueSyncBehaviour
@@ -53,6 +54,11 @@ public abstract class Actor : TrueSyncBehaviour
     /// 这个Actor身上所有的属性
     /// </summary>
     public ActorAttr mActorAttr = new ActorAttr();
+
+	/// <summary>
+	/// 血条显示
+	/// </summary>
+	protected BloodStrip bloodStrip { set; get; }
 
     /// <summary>
     /// 这个Actor身上所有的Buff
@@ -98,8 +104,30 @@ public abstract class Actor : TrueSyncBehaviour
     public abstract void PlayerInputHandle_MoveEnd();
     public abstract void PlayerInputHandle_KeyUp(int inputKey);
     public abstract void PlayerInputHandle_KeyDown(int inputKey);
-    public abstract void PlayerInputHandle_KeyAngle(int inputKey);
+	public abstract void PlayerInputHandle_KeyAngle(int inputKey, int inputAngleX, int inputAngleY);
     public abstract void PlayerInputHandle_ClickXY(int inputPosX, int inputPosY);
+
+	protected abstract void onUp_Skill_1();
+	protected abstract void onDown_Skill_1();
+	protected abstract void StartMoveCallBack_Skill_1();
+	protected abstract void MoveCallBack_Skill_1(Vector2 tVec2);
+	protected abstract void EndMoveCallBack_Skill_1(Vector2 tVec2);
+	protected abstract void onUp_Skill_2();
+	protected abstract void onDown_Skill_2();
+	protected abstract void StartMoveCallBack_Skill_2();
+	protected abstract void MoveCallBack_Skill_2(Vector2 tVec2);
+	protected abstract void EndMoveCallBack_Skill_2(Vector2 tVec2);
+	protected abstract void onUp_Skill_3();
+	protected abstract void onDown_Skill_3();
+	protected abstract void StartMoveCallBack_Skill_3();
+	protected abstract void MoveCallBack_Skill_3(Vector2 tVec2);
+	protected abstract void EndMoveCallBack_Skill_3(Vector2 tVec2);
+	protected abstract void onUp_Skill_4();
+	protected abstract void onDown_Skill_4();
+	protected abstract void StartMoveCallBack_Skill_4();
+	protected abstract void MoveCallBack_Skill_4(Vector2 tVec2);
+	protected abstract void EndMoveCallBack_Skill_4(Vector2 tVec2);
+
 
     public void TransState(ActorStateType tStateType, params object[] param)
     {
@@ -284,16 +312,16 @@ public abstract class Actor : TrueSyncBehaviour
     #endregion 位置相关
 
     #region 技能操作相关
-    public virtual void Skill_1()
+	public virtual void Skill_1(params object[] param)
     {
     }
-    public virtual void Skill_2()
+	public virtual void Skill_2(params object[] param)
     {
     }
-    public virtual void Skill_3()
+	public virtual void Skill_3(params object[] param)
     {
     }
-    public virtual void Skill_4()
+	public virtual void Skill_4(params object[] param)
     {
     }
     #endregion 技能操作相关
@@ -309,7 +337,7 @@ public abstract class Actor : TrueSyncBehaviour
     **/
     public void OnSyncedCollisionEnter(TSCollision other)
     {
-        other.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+        //other.gameObject.GetComponent<Renderer>().material.color = Color.gray;
         Debug.LogErrorFormat("Actor====>Collision   Enter==>{0}", other.gameObject.name);
     }
 
@@ -326,7 +354,7 @@ public abstract class Actor : TrueSyncBehaviour
     **/
     public void OnSyncedCollisionExit(TSCollision other)
     {
-        other.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        //other.gameObject.GetComponent<Renderer>().material.color = Color.blue;
         Debug.LogErrorFormat("Actor====>Collision   Exit==>{0}", other.gameObject.name);
     }
 

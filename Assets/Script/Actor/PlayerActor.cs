@@ -34,6 +34,16 @@ public class PlayerActor : Actor
     //ETCJoystick joy_skill_4;
     ETCButton button_4;
 
+	protected GameObject image_quxiao;
+	protected GameObject image_quxiao2;
+	private int ScreenWidth = 1920;
+	private int ScreenHeigth = 1080;
+	private int ScreenScale = 1;
+	private int ScreenWidth_Min = 1620;
+	private int ScreenWidth_Max = 1720;
+	private int ScreenHeigth_Min = 780;
+	private int ScreenHeigth_Max = 880;
+
     public SplatManager splatManager;
     public GameObject[] WillUsedPrefabs; 
 
@@ -100,7 +110,7 @@ public class PlayerActor : Actor
                 PlayerInputHandle_KeyDown(input.Key);
                 break;
             case InputType.KeyAngle:
-                PlayerInputHandle_KeyAngle(input.Key);
+				PlayerInputHandle_KeyAngle(input.Key, input.AngleX, input.AngleY);
                 break;
             case InputType.ClickXy:
                 PlayerInputHandle_ClickXY(input.PosX, input.PosY);
@@ -167,9 +177,24 @@ public class PlayerActor : Actor
         }
     }
 
-    public override void PlayerInputHandle_KeyAngle(int inputKey)
+	public override void PlayerInputHandle_KeyAngle(int inputKey, int inputAngleX, int inputAngleY)
     {
-        
+		Debug.LogErrorFormat("PlayerInputHandle_KeyAngle==========>{0},{1},{2}", inputKey, inputAngleX, inputAngleY);
+		switch (inputKey)
+		{
+			case 1:
+				this.TransState(ActorStateType.Skill_1, inputAngleX, inputAngleY);
+				break;
+			case 2:
+				this.TransState(ActorStateType.Skill_2, inputAngleX, inputAngleY);
+				break;
+			case 3:
+				this.TransState(ActorStateType.Skill_3, inputAngleX, inputAngleY);
+				break;
+			case 4:
+				this.TransState(ActorStateType.Skill_4, inputAngleX, inputAngleY);
+				break;
+		}
     }
 
     public override void PlayerInputHandle_ClickXY(int inputPosX, int inputPosY)
@@ -180,6 +205,8 @@ public class PlayerActor : Actor
     //==========================处理摇杆等本地操作开始=======================================================
     void Start()
     {
+		bloodStrip = transform.gameObject.AddComponent<BloodStrip>();
+		bloodStrip.InitBloodStrip(mActorAttr);
         Camera mCamera = transform.Find("camera").GetComponent<Camera>();
         if (this.IsETCControl == false) 
         {
@@ -187,7 +214,8 @@ public class PlayerActor : Actor
             return;
         }
         mCamera.enabled = true;
-        splatManager = ActorObj.AddComponent<SplatManager>();
+		_FightCamera = mCamera;
+		splatManager = ActorObj.AddComponent<SplatManager>();
         InitSkill();
         splatManager.AutoInit();
         joy_move = GameObject.Find("Joystick_move").GetComponent<ETCJoystick>();
@@ -199,6 +227,19 @@ public class PlayerActor : Actor
         button_3 = GameObject.Find("ETCButton_3").GetComponent<ETCButton>();
         //joy_skill_4 = GameObject.Find("Joystick_skill_4").GetComponent<ETCJoystick>();
         button_4 = GameObject.Find("ETCButton_4").GetComponent<ETCButton>();
+		image_quxiao = GameObject.Find("Image_quxiao");
+		image_quxiao.SetActive(false);
+		image_quxiao2 = GameObject.Find("Image_quxiao2");
+		image_quxiao2.SetActive(false);
+		ScreenWidth = Screen.width;
+		ScreenHeigth = Screen.height;
+		ScreenScale = Screen.width * 1000 / 1920;//已宽度为准的缩放比例
+		ScreenWidth_Min = ScreenWidth - 325 * ScreenScale / 1000;
+		ScreenWidth_Max = ScreenWidth - 175 * ScreenScale / 1000;
+		ScreenHeigth_Min = ScreenHeigth - 325 * ScreenScale / 1000;
+		ScreenHeigth_Max = ScreenHeigth - 175 * ScreenScale / 1000;
+		//Debug.LogErrorFormat("Screen==========>{0},{1},{2}", ScreenWidth, ScreenHeigth, ScreenScale);
+		//Debug.LogErrorFormat("Scale===========>{0},{1},{2},{3}", ScreenWidth_Min, ScreenWidth_Max, ScreenHeigth_Min, ScreenHeigth_Max);
         if (joy_move != null)
         {
             joy_move.onMoveStart.AddListener(StartMoveCallBack);
@@ -348,117 +389,186 @@ public class PlayerActor : Actor
         }
     }
 
-    void EndMoveCallBack()
+	void EndMoveCallBack(Vector2 tVec2)
     {
         _UdpSendManager.SendEndMove();
     }
+	//===========================================================================
+	/// <summary>
+	/// 判断ETCJoystick的EndMove时候,时候在取消区域范围内
+	/// </summary>
+	protected bool IsInQuXiaoArea(Vector2 tVec2)
+	{
+		//取消区域锚点在右上角,屏幕为1920*1080时,坐标(-250,-250),大小150*150,所以范围是X=(-325,-175),Y=(-325,-175),用左下角坐标系为
+		if ((ScreenWidth_Min < tVec2.x && tVec2.x < ScreenWidth_Max) && (ScreenHeigth_Min < tVec2.y && tVec2.y < ScreenHeigth_Max))
+			return true;
+		return false;
+	}
+	protected bool IsInQuXiaoArea(Vector3 tVec3)
+	{
+		if ((ScreenWidth_Min < tVec3.x && tVec3.x < ScreenWidth_Max) && (ScreenHeigth_Min < tVec3.y && tVec3.y < ScreenHeigth_Max))
+			return true;
+		return false;
+	}
     //===========================================================================
-    void onUp_Skill_1()
+	protected override void onUp_Skill_1() { }
+	protected override void onDown_Skill_1() { }
+	protected override void StartMoveCallBack_Skill_1() { }
+	protected override void MoveCallBack_Skill_1(Vector2 tVec2) { }
+	protected override void EndMoveCallBack_Skill_1(Vector2 tVec2) { }
+	protected override void onUp_Skill_2() { }
+	protected override void onDown_Skill_2() { }
+	protected override void StartMoveCallBack_Skill_2() { }
+	protected override void MoveCallBack_Skill_2(Vector2 tVec2) { }
+	protected override void EndMoveCallBack_Skill_2(Vector2 tVec2) { }
+	protected override void onUp_Skill_3() { }
+	protected override void onDown_Skill_3() { }
+	protected override void StartMoveCallBack_Skill_3() { }
+	protected override void MoveCallBack_Skill_3(Vector2 tVec2) { }
+	protected override void EndMoveCallBack_Skill_3(Vector2 tVec2) { }
+	protected override void onUp_Skill_4() { }
+	protected override void onDown_Skill_4() { }
+	protected override void StartMoveCallBack_Skill_4() { }
+	protected override void MoveCallBack_Skill_4(Vector2 tVec2) { }
+	protected override void EndMoveCallBack_Skill_4(Vector2 tVec2) { }
+	/***
+	protected override void onUp_Skill_1()
     {
         splatManager.CancelAll();
         Debug.LogErrorFormat("onUp_Skill_1==========>{0}", SkillControlType_1);
         if (SkillControlType_1 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(1, InputType.KeyUp);
     }
-    void onDown_Skill_1()
+	protected override void onDown_Skill_1()
     {
         splatManager.SelectStatusIndicator("Status");
         Debug.LogErrorFormat("onDown_Skill_1==========>{0}", SkillControlType_1);
         if (SkillControlType_1 == SkillControlType.Button_KeyDown)
             _UdpSendManager.SendInputSkill(1, InputType.KeyDown);
     }
-    void StartMoveCallBack_Skill_1()
+	protected override void StartMoveCallBack_Skill_1()
     {
+		image_quxiao.SetActive(true);
         Debug.LogErrorFormat("StartMoveCallBack_Skill_1==========>");
     }
-    void MoveCallBack_Skill_1(Vector2 tVec2)
+	protected override void MoveCallBack_Skill_1(Vector2 tVec2)
     {
-        Debug.LogErrorFormat("MoveCallBack_Skill_1==========>{0}", tVec2);
+		if (IsInQuXiaoArea(Input.mousePosition))
+			image_quxiao2.SetActive(true);
+		else
+			image_quxiao2.SetActive(false);
+        //Debug.LogErrorFormat("MoveCallBack_Skill_1==========>{0}", tVec2);
     }
-    void EndMoveCallBack_Skill_1()
+	protected override void EndMoveCallBack_Skill_1(Vector2 tVec2)
     {
-        Debug.LogErrorFormat("EndMoveCallBack_Skill_1==========>");
+		image_quxiao.SetActive(false);
+		image_quxiao2.SetActive(false);
+		Debug.LogErrorFormat("EndMoveCallBack_Skill_1==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
+		if (!IsInQuXiaoArea(tVec2))
+			_UdpSendManager.SendAngleSkill(1, 0, 0);
     }
     //===========================================================================
-    void onUp_Skill_2()
+	protected override void onUp_Skill_2()
     {
         if (SkillControlType_2 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(2, InputType.KeyUp);
     }
-    void onDown_Skill_2()
+	protected override void onDown_Skill_2()
     {
         if (SkillControlType_2 == SkillControlType.Button_KeyDown)
             _UdpSendManager.SendInputSkill(2, InputType.KeyDown);
     }
-    void StartMoveCallBack_Skill_2()
+	protected override void StartMoveCallBack_Skill_2()
     {
+		image_quxiao.SetActive(true);
         Debug.LogErrorFormat("StartMoveCallBack_Skill_2==========>");
         splatManager.SelectSpellIndicator("Point");
     }
-    void MoveCallBack_Skill_2(Vector2 tVec2)
+	protected override void MoveCallBack_Skill_2(Vector2 tVec2)
     {
+		if (IsInQuXiaoArea(Input.mousePosition))
+			image_quxiao2.SetActive(true);
+		else
+			image_quxiao2.SetActive(false);
         SpellIndicator mCone = splatManager.GetSpellIndicator("Point");
         mCone.JoystickVector = new Vector3(tVec2.x, 0, tVec2.y);
-        Debug.LogErrorFormat("MoveCallBack_Skill_2==========>{0}", tVec2);
+		//Debug.LogErrorFormat("MoveCallBack_Skill_2==========>{0}", tVec2);
     }
-    void EndMoveCallBack_Skill_2()
+	protected override void EndMoveCallBack_Skill_2(Vector2 tVec2)
     {
+		image_quxiao.SetActive(false);
+		image_quxiao2.SetActive(false);
         SpellIndicator mCone = splatManager.GetSpellIndicator("Point");
         splatManager.CancelAll();
-        Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>");
+		Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
     }
     //===========================================================================
-    void onUp_Skill_3()
+	protected override void onUp_Skill_3()
     {
         if (SkillControlType_3 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(3, InputType.KeyUp);
     }
-    void onDown_Skill_3()
+	protected override void onDown_Skill_3()
     {
         if (SkillControlType_3 == SkillControlType.Button_KeyDown)
             _UdpSendManager.SendInputSkill(3, InputType.KeyDown);
     }
-    void StartMoveCallBack_Skill_3()
+	protected override void StartMoveCallBack_Skill_3()
     {
+		image_quxiao.SetActive(true);
         splatManager.SelectSpellIndicator("Line");
         Debug.LogErrorFormat("StartMoveCallBack_Skill_3==========>");
     }
-    void MoveCallBack_Skill_3(Vector2 tVec2)
+	protected override void MoveCallBack_Skill_3(Vector2 tVec2)
     {
+		if (IsInQuXiaoArea(Input.mousePosition))
+			image_quxiao2.SetActive(true);
+		else
+			image_quxiao2.SetActive(false);
         SpellIndicator mCone = splatManager.GetSpellIndicator("Line");
         mCone.JoystickVector = new Vector3(tVec2.x, 0, tVec2.y);
-        Debug.LogErrorFormat("MoveCallBack_Skill_3==========>{0}", tVec2);
+		//Debug.LogErrorFormat("MoveCallBack_Skill_3==========>{0}", tVec2);
     }
-    void EndMoveCallBack_Skill_3()
+	protected override void EndMoveCallBack_Skill_3(Vector2 tVec2)
     {
+		image_quxiao.SetActive(false);
+		image_quxiao2.SetActive(false);
         splatManager.CancelAll();
-        Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>");
+		Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
     }
     //===========================================================================
-    void onUp_Skill_4()
+	protected override void onUp_Skill_4()
     {
         splatManager.CancelAll();
         if (SkillControlType_4 == SkillControlType.Button_KeyUp)
             _UdpSendManager.SendInputSkill(4, InputType.KeyUp);
     }
-    void onDown_Skill_4()
+	protected override void onDown_Skill_4()
     {
         splatManager.SelectRangeIndicator("Range");
         if (SkillControlType_4 == SkillControlType.Button_KeyDown)
             _UdpSendManager.SendInputSkill(4, InputType.KeyDown);
     }
-    void StartMoveCallBack_Skill_4()
+	protected override void StartMoveCallBack_Skill_4()
     {
+		image_quxiao.SetActive(true);
         Debug.LogErrorFormat("StartMoveCallBack_Skill_4==========>");
     }
-    void MoveCallBack_Skill_4(Vector2 tVec2)
+	protected override void MoveCallBack_Skill_4(Vector2 tVec2)
     {
-        Debug.LogErrorFormat("MoveCallBack_Skill_4==========>{0}", tVec2);
+		if (IsInQuXiaoArea(Input.mousePosition))
+			image_quxiao2.SetActive(true);
+		else
+			image_quxiao2.SetActive(false);
+		//Debug.LogErrorFormat("MoveCallBack_Skill_4==========>{0}", tVec2);
     }
-    void EndMoveCallBack_Skill_4()
+	protected override void EndMoveCallBack_Skill_4(Vector2 tVec2)
     {
-        Debug.LogErrorFormat("EndMoveCallBack_Skill_4==========>");
+		image_quxiao.SetActive(false);
+		image_quxiao2.SetActive(false);
+		Debug.LogErrorFormat("EndMoveCallBack_Skill_4==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
     }
+	***/
     //===========================================================================
 
     void OnDestroy()

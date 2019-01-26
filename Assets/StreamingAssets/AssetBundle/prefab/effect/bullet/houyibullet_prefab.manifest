@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4196902067
+CRC: 992481630
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9d065e86905e480d2e2b7abc7f84924f
+    Hash: 6b280e8fe556ac3b10b2c61a95c4529e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 547b5cf38114f4e2a70c29fe36966f39
+    Hash: 22e8c046dcb5378b436473db86193c99
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,16 +21,15 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
-- Class: 48
-  Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: d8561a4124465f743903b76d8cf232a9, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9f371a88b108eee4d91b2708a9313b13, type: 3}
+  Script: {fileID: 11500000, guid: 4e4aa81af62745f479108af638d05570, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: df3e4ecc2c78eaa409dad488c230d65d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c4c7bd8f1459c9546b38fea6d5368cd9, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
 - Assets/Prefab/Effect/Bullet/houyiBullet.prefab
-Dependencies: []
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/hero/houyi/hero_houyi_mat

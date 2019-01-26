@@ -472,6 +472,9 @@ namespace TrueSync {
                 actor.transform.parent = mActorParent;
                 //actor.Position = new CustomVector3(0, 0, 0);
                 actor.Speed = (FP)0.1f;
+				actor.mActorAttr.HpMax = (FP)100;
+				actor.mActorAttr.Hp = (FP)50;
+				actor.mActorAttr.Name = mFightPlayerInfo.Name;
                 actor.RotateTSTransform.LookAt(TSVector.left);
                 actor.AllTSTransform.LookAt(TSVector.left);
                 actor.Angle = new TSVector();

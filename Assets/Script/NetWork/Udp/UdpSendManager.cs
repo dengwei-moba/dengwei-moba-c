@@ -69,4 +69,15 @@ public class UdpSendManager : ScriptBase
         //Debug.Log("SendSkill_1=====");
     }
 
+	public void SendAngleSkill(int inputKey, int tAngle_X, int tAngle_Y)
+	{
+		PB_C2SClientInput mClientInputs = new PB_C2SClientInput();
+		PB_ClientInput oneInput = new PB_ClientInput();
+		oneInput.InputType = InputType.KeyAngle;
+		oneInput.Key = inputKey;
+		oneInput.AngleX = tAngle_X;
+		oneInput.AngleY = tAngle_Y;
+		mClientInputs.Inputs.Add(oneInput);
+		_UnityUdpSocket.Send(MsgID.C2SInputInfo, mClientInputs);
+	}
 }
