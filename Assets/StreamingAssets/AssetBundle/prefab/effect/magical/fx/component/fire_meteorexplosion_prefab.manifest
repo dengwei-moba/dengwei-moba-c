@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 796554091
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dfefd63741b578c424af4a2ed263a316
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1e35d2304863c45efa4cf2871c5f5561
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4b69c254cd7aac34cae94e53410c6ba9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aea3c196ff927664fac017e6ff812a54, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Component/Fire_MeteorExplosion.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/fire1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak3_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/lavarock_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/no
+  name_mat

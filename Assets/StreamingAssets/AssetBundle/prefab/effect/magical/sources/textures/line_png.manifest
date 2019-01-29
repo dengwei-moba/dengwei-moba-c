@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3421824835
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ad62e1e04a8833044c202fa41c43676a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/line.png
+Dependencies: []

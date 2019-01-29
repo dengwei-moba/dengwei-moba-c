@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 2874456959
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 47b0df28eedeb8af12361bad7f9205fe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d4cb52e72bbb2f05a007a862468c757
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Component/Fire_Line.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/fire1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/lineup_mat

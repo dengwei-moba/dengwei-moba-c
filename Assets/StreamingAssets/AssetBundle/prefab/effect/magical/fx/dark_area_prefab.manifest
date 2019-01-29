@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 1392380949
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 18cb73664e6a8e99ef8cfe1396cd5bc7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 97d28407db4b6dfb1327805e68b4463b
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: df3e4ecc2c78eaa409dad488c230d65d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c4c7bd8f1459c9546b38fea6d5368cd9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2b0f0be930c1c584d8fbe7a70f22813f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4b69c254cd7aac34cae94e53410c6ba9, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Dark_Area.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/darksmoke_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/darkstomp_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/electric_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/fire1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak2_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/magical2_mat

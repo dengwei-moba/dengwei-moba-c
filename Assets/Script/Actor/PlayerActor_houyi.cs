@@ -52,6 +52,64 @@ public class GameState_Skill_1_houyi : ActorState
     }
 }
 
+public class GameState_Skill_2_houyi : ActorState
+{
+	private Actor mActor;
+	private int PlayAnimationFrame = 8;
+	private int inputAngleX;
+	private int inputAngleY;
+
+	public override ActorStateType StateType
+	{
+		get
+		{
+			return ActorStateType.Skill_1;
+		}
+	}
+
+	public override void TryTransState(ActorStateType tStateType)
+	{
+
+	}
+
+	public override void Enter(params object[] param)
+	{
+		mActor = param[0] as Actor;
+		object[] param2 = param[1] as object[];
+		inputAngleX = (int)(param2[0]);
+		inputAngleY = (int)(param2[1]);
+		//Debug.LogErrorFormat("Enter==========>{0},{1}", inputAngleX, inputAngleY);
+		if (mActor != null && mActor.ActorObj != null)
+		{
+			//先转身
+			//TSVector mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
+			//mActor.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
+			if (mActor.ActorAnimation != null)
+			{
+				mActor.ActorAnimation.wrapMode = WrapMode.Loop;
+				mActor.ActorAnimation.Play("skill3");
+				PlayAnimationFrame = 8;
+			}
+		}
+	}
+
+	public override void Exit(ActorState NextGameState)
+	{
+		mActor = null;
+	}
+
+	public override void OnUpdate()
+	{
+		PlayAnimationFrame--;
+		if (mActor != null && mActor.ActorObj != null && PlayAnimationFrame <= 0)
+		{
+			mActor.Skill_2(inputAngleX, inputAngleY, PlayAnimationFrame);
+			if (PlayAnimationFrame<=0)
+				mActor.TransState(ActorStateType.Idle);
+		}
+	}
+}
+
 public class GameState_Skill_3_houyi : ActorState
 {
 	private Actor mActor;
@@ -117,6 +175,7 @@ public class PlayerActor_houyi : PlayerActor
         mStateMachineDic[ActorStateType.Idle] = new GameState_Idle_Normal();
         mStateMachineDic[ActorStateType.Move] = new GameState_Move_Normal();
         mStateMachineDic[ActorStateType.Skill_1] = new GameState_Skill_1_houyi();
+		mStateMachineDic[ActorStateType.Skill_2] = new GameState_Skill_2_houyi();
 		mStateMachineDic[ActorStateType.Skill_3] = new GameState_Skill_3_houyi();
     }
 
@@ -124,7 +183,12 @@ public class PlayerActor_houyi : PlayerActor
     {
         WillUsedPrefabs = new GameObject[3];
 		WillUsedPrefabs[0] = _AssetManager.GetGameObject("prefab/effect/bullet/houyi_pengzhuang_prefab");
-        WillUsedPrefabs[1] = _AssetManager.GetGameObject("prefab/effect/bullet/houyibullet_prefab");
+		WillUsedPrefabs[1] = _AssetManager.GetGameObject("prefab/effect/bullet/houyibullet_prefab");
+		houyiBullet houyibullethouyiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
+		houyibullethouyiBullet.ownerIndex = (int)Id;
+		WillUsedPrefabs[1].SetActive(false);
+		WillUsedPrefabs[2] = _AssetManager.GetGameObject("prefab/effect/magical/fx/dark_area_prefab");
+		WillUsedPrefabs[2].SetActive(false);
     }
 	//================================技能实现效果相关===========================================
 	public override void Skill_1(params object[] param)  //闪现
@@ -190,17 +254,52 @@ public class PlayerActor_houyi : PlayerActor
 		AllTSTransform.Translate(hit.normal * (FP)1f);//修正一个人物碰撞半径:碰撞法向量的垂直向量
 
 	}
+	public override void Skill_2(params object[] param)  //范围箭
+	{
+		int inputAngleX = Convert.ToInt32(param[0]);
+		int inputAngleY = Convert.ToInt32(param[1]);
+		int PlayAnimationFrame = Convert.ToInt32(param[2]);
+		TSVector mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
+		int Range = 9;
+		WillUsedPrefabs[2].SetActive(true);
+		TrueSyncManager.SyncedInstantiate(WillUsedPrefabs[2], new TSVector(AllTSTransform.position.x, 0, AllTSTransform.position.z) + mTSVector * Range, RotateTSTransform.rotation);
+		WillUsedPrefabs[2].SetActive(false);
+		/***
+		if (PlayAnimationFrame == 0)
+		{
+			WillUsedPrefabs[2] = _AssetManager.GetGameObject("magical/fx/dark_area_prefab");
+			TSTransform dark_area_prefab_AllTSTransform = WillUsedPrefabs[2].GetComponent<TSTransform>();
+			dark_area_prefab_AllTSTransform.position = new TSVector(AllTSTransform.position.x, 0, AllTSTransform.position.z);
+			
+			dark_area_prefab_AllTSTransform.Translate(mTSVector * Range);
+			dark_area_prefab_AllTSTransform.OnUpdate();
+		}
+		else {
+			TSTransform dark_area_prefab_AllTSTransform = WillUsedPrefabs[2].GetComponent<TSTransform>();
+			int Range = 3;
+			dark_area_prefab_AllTSTransform.Translate(mTSVector * Range);
+			dark_area_prefab_AllTSTransform.OnUpdate();
+		}
+		***/
+		Debug.LogErrorFormat("Skill_2范围箭==========>{0},{1}", mTSVector, PlayAnimationFrame);
+	}
 	public override void Skill_3(params object[] param)  //远程箭
 	{
 		int inputAngleX = Convert.ToInt32(param[0]);
 		int inputAngleY = Convert.ToInt32(param[1]);		
 		TSVector mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
-		houyiBullet houyibullethouyiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
-		houyibullethouyiBullet.ownerIndex = (int) Id;
-		houyibullethouyiBullet.AllTSTransform.position = new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z);
-		houyibullethouyiBullet.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
-		houyibullethouyiBullet.Angle = mTSVector;
-		Debug.LogErrorFormat("Skill_3远程箭==========>{0},{1},{2}", inputAngleX, inputAngleY, houyibullethouyiBullet.Angle);
+		//houyiBullet houyibullethouyiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
+		//houyibullethouyiBullet.ownerIndex = (int)Id;
+		//houyibullethouyiBullet.AllTSTransform.position = new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z);
+		//houyibullethouyiBullet.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
+		//houyibullethouyiBullet.Angle = mTSVector;
+		Debug.LogErrorFormat("Skill_3远程箭==========>{0},{1},{2},ownerIndex={3}", inputAngleX, inputAngleY, mTSVector, Id);
+		GameObject realObj = TrueSyncManager.SyncedInstantiate(WillUsedPrefabs[1], new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z), TSQuaternion.identity);
+		realObj.SetActive(true);
+		houyiBullet houyibullethouyiBullet2 = realObj.GetComponent<houyiBullet>();
+		houyibullethouyiBullet2.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
+		houyibullethouyiBullet2.Angle = mTSVector;
+		
 	}
 	//================================技能本地操作相关===========================================
     protected override void InitSkill()

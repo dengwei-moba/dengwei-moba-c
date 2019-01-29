@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1340041526
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ed241a006984b93e89cb2aadb75e44e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/lava_rock_normal.png
+Dependencies: []

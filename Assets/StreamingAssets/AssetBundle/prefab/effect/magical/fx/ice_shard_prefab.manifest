@@ -1,0 +1,54 @@
+ManifestFileVersion: 0
+CRC: 2679968598
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 192b79f9e64f78e1d054ed9b5171356b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 615cc9d9dfbe216896a55ce60606b4b0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 49ffe117472f28a42ae488a517f0f3ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4b69c254cd7aac34cae94e53410c6ba9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6abd900d106201b4fb1e780b626ff25b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aea3c196ff927664fac017e6ff812a54, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d9c26fd6639e21a438e96471ee756f52, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Ice_Shard.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/fx/component/ice_explosion_prefab
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/fx/component/ice_shardexplosion_prefab
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak2_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/ice_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/no
+  name_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/smoke_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/smoke1_mat

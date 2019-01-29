@@ -207,6 +207,7 @@ public class PlayerActor : Actor
     {
 		bloodStrip = transform.gameObject.AddComponent<BloodStrip>();
 		bloodStrip.InitBloodStrip(mActorAttr);
+		InitWillUsedPrefabs();
         Camera mCamera = transform.Find("camera").GetComponent<Camera>();
         if (this.IsETCControl == false) 
         {

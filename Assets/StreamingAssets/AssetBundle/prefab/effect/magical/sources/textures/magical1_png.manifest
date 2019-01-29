@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1062821282
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1be804d60aa40fa6f1a9a6c67cecab12
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/magical1.png
+Dependencies: []

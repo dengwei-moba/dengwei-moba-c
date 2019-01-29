@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4277570009
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b0809716e7ef6fd4c136687aa6ba4788
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/smoke2.png
+Dependencies: []

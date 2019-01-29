@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1482440417
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 914260b963f757241b8a5e33410b53dd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d1ae6e26fb0b4d11fccd18da598542fa
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Materials/Smoke1.mat
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/textures/smoke_png

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2029788372
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a33a82251ed19ae161b4f96fbf35b7cd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/earth.png
+Dependencies: []

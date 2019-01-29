@@ -49,7 +49,7 @@ public class houyiBullet : TrueSyncBehaviour
 		AllTSTransform.Translate(Angle * Speed);
 		AllTSTransform.OnUpdate();
 		RotateTSTransform.OnUpdate();
-		//Debug.LogErrorFormat("houyiBullet====>{0},{1}", Angle , RotateTSTransform.rotation.eulerAngles);
+		//Debug.LogErrorFormat("houyiBullet====>{0},{1},{2}",ownerIndex, Angle, RotateTSTransform.rotation.eulerAngles);
     }
 
 	#region TrueSyncBehaviour操作相关
@@ -82,13 +82,11 @@ public class houyiBullet : TrueSyncBehaviour
 		if (otherLayerMask == LayerMask.GetMask("Role"))
 		{
 			Actor mActor = other.gameObject.GetComponent<Actor>();
+			Debug.LogErrorFormat("houyiBullet====>TriggerEnter==>自己ownerIndex:{0},对方mActor.Id={1}", ownerIndex, (int)mActor.Id);
 			if (ownerIndex != (int)mActor.Id)
 			{
 				mActor.mActorAttr.Hp -= 10;
 				TrueSyncManager.SyncedDestroy(gameObject);
-			}
-			else {
-				Debug.LogErrorFormat("houyiBullet====>Trigger  Enter==>自己:{0}", ownerIndex);
 			}
 		}
 		else if (otherLayerMask == LayerMask.GetMask("GroundWall"))

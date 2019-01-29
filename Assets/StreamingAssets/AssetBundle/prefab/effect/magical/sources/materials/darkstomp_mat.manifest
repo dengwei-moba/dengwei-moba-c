@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 4037208741
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2918e3a9844ead11bf2d5a4861961443
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d1ae6e26fb0b4d11fccd18da598542fa
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Materials/DarkStomp.mat
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/textures/stomp3_png

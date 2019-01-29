@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 1597075801
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 615087443ebcaa5d3e510f0991d4b5d4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9f5c4751b7881155f27bf3a176ab545e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4b69c254cd7aac34cae94e53410c6ba9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6f9f0b82b6ced6f4b8a9175bf4a451aa, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Lighting_Fissure.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/fx/lighting_thunderstrike_prefab

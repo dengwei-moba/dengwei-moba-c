@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1661311908
+CRC: 57859516
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -83,88 +83,716 @@ AssetBundleManifest:
       Dependencies:
         Dependency_0: prefab/hero/houyi/hero_houyi_mat
     Info_24:
+      Name: prefab/effect/bullet/houyi_pengzhuang_prefab
+      Dependencies: {}
+    Info_25:
       Name: prefab/effect/bullet/pengzhuanfaxiangliang_prefab
       Dependencies:
         Dependency_0: prefab/hero/houyi/hero_houyi_mat
-    Info_25:
+    Info_26:
       Name: prefab/effect/bullet/pengzhuanweizhi_prefab
       Dependencies:
         Dependency_0: prefab/hero/houyi/hero_houyi_mat
-    Info_26:
+    Info_27:
       Name: prefab/effect/fire/(legacy) 10m flame projected_png
       Dependencies: {}
-    Info_27:
+    Info_28:
       Name: prefab/effect/fire/fire_prefab
       Dependencies:
         Dependency_0: prefab/effect/fire/new material_mat
-    Info_28:
+    Info_29:
       Name: prefab/effect/fire/new material_mat
       Dependencies:
         Dependency_0: prefab/effect/wind/wind_png
-    Info_29:
+    Info_30:
+      Name: prefab/effect/magical/fx/arcane_missle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/arcane_explosion_prefab
+        Dependency_1: prefab/effect/magical/fx/component/fire_flash_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/fire2_mat
+        Dependency_3: prefab/effect/magical/sources/materials/magic_mat
+    Info_31:
+      Name: prefab/effect/magical/fx/dark_area_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_1: prefab/effect/magical/sources/materials/darkstomp_mat
+        Dependency_2: prefab/effect/magical/sources/materials/electric_mat
+        Dependency_3: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_4: prefab/effect/magical/sources/materials/flak2_mat
+        Dependency_5: prefab/effect/magical/sources/materials/magical2_mat
+    Info_32:
+      Name: prefab/effect/magical/fx/dark_missile_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/dark_explosion_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_2: prefab/effect/magical/sources/materials/darkstomp_mat
+        Dependency_3: prefab/effect/magical/sources/materials/fire1_mat
+    Info_33:
+      Name: prefab/effect/magical/fx/dark_shot_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/dark_explosion_prefab
+        Dependency_1: prefab/effect/magical/fx/component/dark_tail_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_3: prefab/effect/magical/sources/materials/darkstomp_mat
+    Info_34:
+      Name: prefab/effect/magical/fx/dark_warp_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_1: prefab/effect/magical/sources/materials/darkstomp_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak3_mat
+    Info_35:
+      Name: prefab/effect/magical/fx/earth_fissure_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/earth_obstacle_prefab
+    Info_36:
+      Name: prefab/effect/magical/fx/earth_wall_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/earth_fissure_prefab
+    Info_37:
+      Name: prefab/effect/magical/fx/fire_area_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/magical1_mat
+    Info_38:
+      Name: prefab/effect/magical/fx/fire_fireball_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_explosion_prefab
+        Dependency_1: prefab/effect/magical/fx/component/fire_flash_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_4: prefab/effect/magical/sources/materials/smoke1_mat
+    Info_39:
+      Name: prefab/effect/magical/fx/fire_fireballblue_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_flash_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak1_mat
+    Info_40:
+      Name: prefab/effect/magical/fx/fire_fissure_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_obstacle_prefab
+    Info_41:
+      Name: prefab/effect/magical/fx/fire_groundexplosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak3_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_5: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_6: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_42:
+      Name: prefab/effect/magical/fx/fire_macropyre_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_burn_prefab
+    Info_43:
+      Name: prefab/effect/magical/fx/fire_meteor_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/fire_groundexplosion_prefab
+        Dependency_1: prefab/effect/magical/fx/component/fire_meteorexplosion_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_4: prefab/effect/magical/sources/materials/flak3_mat
+        Dependency_5: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_6: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_7: prefab/effect/magical/sources/materials/smoke_mat
+    Info_44:
+      Name: prefab/effect/magical/fx/fire_rock_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_flash_prefab
+        Dependency_1: prefab/effect/magical/fx/component/fire_rockexplosion_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_4: prefab/effect/magical/sources/materials/flak3_mat
+        Dependency_5: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_6: prefab/effect/magical/sources/materials/no name_mat
+    Info_45:
+      Name: prefab/effect/magical/fx/fire_spikefissure_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/fire_spike_prefab
+    Info_46:
+      Name: prefab/effect/magical/fx/ice_fissure_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_obstacle_prefab
+    Info_47:
+      Name: prefab/effect/magical/fx/ice_hammer_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_explosion_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/electric_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lightingcloud_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+    Info_48:
+      Name: prefab/effect/magical/fx/ice_missile_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_explosion_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/electric_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak1_mat
+    Info_49:
+      Name: prefab/effect/magical/fx/ice_pathspike_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_spike_prefab
+    Info_50:
+      Name: prefab/effect/magical/fx/ice_shard_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_explosion_prefab
+        Dependency_1: prefab/effect/magical/fx/component/ice_shardexplosion_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/flak2_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ice_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_5: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_6: prefab/effect/magical/sources/materials/smoke1_mat
+    Info_51:
+      Name: prefab/effect/magical/fx/ice_wave_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/ice_explosion_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lighting2_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ring3_mat
+    Info_52:
+      Name: prefab/effect/magical/fx/lighting_fissure_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/lighting_thunderstrike_prefab
+    Info_53:
+      Name: prefab/effect/magical/fx/lighting_shot_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/lighting_hit_prefab
+        Dependency_1: prefab/effect/magical/fx/component/lighting_tail_prefab
+        Dependency_2: prefab/effect/magical/sources/materials/flash1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lighting1_mat
+    Info_54:
+      Name: prefab/effect/magical/fx/lighting_thunderstrike_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/lighting_strike_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/flash1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lighting2_mat
+    Info_55:
+      Name: prefab/effect/magical/fx/light_warp_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_2: prefab/effect/magical/sources/materials/magicsign_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ring2_mat
+    Info_56:
+      Name: prefab/effect/magical/fx/water_missle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/fx/component/water_explosion_prefab
+        Dependency_1: prefab/effect/magical/sources/materials/bubble_mat
+    Info_57:
+      Name: prefab/effect/magical/fx/component/arcane_explosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_4: prefab/effect/magical/sources/materials/smoke_mat
+    Info_58:
+      Name: prefab/effect/magical/fx/component/dark_explosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_1: prefab/effect/magical/sources/materials/darkstomp_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/no name_mat
+    Info_59:
+      Name: prefab/effect/magical/fx/component/dark_tail_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/darksmoke_mat
+        Dependency_1: prefab/effect/magical/sources/materials/darkstomp_mat
+    Info_60:
+      Name: prefab/effect/magical/fx/component/earth_obstacle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/earth1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak2_mat
+        Dependency_2: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_3: prefab/effect/magical/sources/materials/smoke1_mat
+        Dependency_4: prefab/effect/magical/sources/materials/stomp4_mat
+    Info_61:
+      Name: prefab/effect/magical/fx/component/firecycle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak2_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lineup_mat
+    Info_62:
+      Name: prefab/effect/magical/fx/component/fire_blue_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+    Info_63:
+      Name: prefab/effect/magical/fx/component/fire_burn_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_64:
+      Name: prefab/effect/magical/fx/component/fire_explosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_3: prefab/effect/magical/sources/materials/smoke_mat
+    Info_65:
+      Name: prefab/effect/magical/fx/component/fire_flash_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/smoke_mat
+    Info_66:
+      Name: prefab/effect/magical/fx/component/fire_line_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+    Info_67:
+      Name: prefab/effect/magical/fx/component/fire_meteorexplosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak3_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+    Info_68:
+      Name: prefab/effect/magical/fx/component/fire_obstacle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_5: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_69:
+      Name: prefab/effect/magical/fx/component/fire_rockexplosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_3: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_4: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_5: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_70:
+      Name: prefab/effect/magical/fx/component/fire_simple_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+    Info_71:
+      Name: prefab/effect/magical/fx/component/fire_spike_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lavarock_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_5: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_6: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_72:
+      Name: prefab/effect/magical/fx/component/ice_explosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/electric_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_4: prefab/effect/magical/sources/materials/smoke_mat
+    Info_73:
+      Name: prefab/effect/magical/fx/component/ice_obstacle_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/ice_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_4: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_5: prefab/effect/magical/sources/materials/stomp2_mat
+    Info_74:
+      Name: prefab/effect/magical/fx/component/ice_shardexplosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/ice_mat
+        Dependency_1: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_2: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_3: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_4: prefab/effect/magical/sources/materials/smoke1_mat
+        Dependency_5: prefab/effect/magical/sources/materials/stomp2_mat
+    Info_75:
+      Name: prefab/effect/magical/fx/component/ice_spike_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/ice_mat
+        Dependency_1: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_2: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_3: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_4: prefab/effect/magical/sources/materials/stomp2_mat
+    Info_76:
+      Name: prefab/effect/magical/fx/component/lighting_hit_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flash2_mat
+        Dependency_2: prefab/effect/magical/sources/materials/smoke_mat
+    Info_77:
+      Name: prefab/effect/magical/fx/component/lighting_strike_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/electric_mat
+        Dependency_1: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_3: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_4: prefab/effect/magical/sources/materials/no name_mat
+        Dependency_5: prefab/effect/magical/sources/materials/ring2_mat
+        Dependency_6: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_7: prefab/effect/magical/sources/materials/stomp1_mat
+    Info_78:
+      Name: prefab/effect/magical/fx/component/lighting_tail_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/flash1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/lighting1_mat
+    Info_79:
+      Name: prefab/effect/magical/fx/component/repel_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/lineup_mat
+        Dependency_3: prefab/effect/magical/sources/materials/ring3_mat
+    Info_80:
+      Name: prefab/effect/magical/fx/component/water_explosion_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/bubble_mat
+        Dependency_1: prefab/effect/magical/sources/materials/smoke_mat
+        Dependency_2: prefab/effect/magical/sources/materials/water_mat
+    Info_81:
+      Name: prefab/effect/magical/sources/particle_psd
+      Dependencies: {}
+    Info_82:
+      Name: prefab/effect/magical/sources/materials/bubble_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/bubble_png
+    Info_83:
+      Name: prefab/effect/magical/sources/materials/darksmoke_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/smoke1_png
+    Info_84:
+      Name: prefab/effect/magical/sources/materials/darkstomp_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/stomp3_png
+    Info_85:
+      Name: prefab/effect/magical/sources/materials/dummy_mat
+      Dependencies: {}
+    Info_86:
+      Name: prefab/effect/magical/sources/materials/earth1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/shader/rimlight_shader
+        Dependency_1: prefab/effect/magical/sources/textures/earth_png
+        Dependency_2: prefab/effect/magical/sources/textures/earth_normal2_png
+    Info_87:
+      Name: prefab/effect/magical/sources/materials/electric_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/electricle_png
+    Info_88:
+      Name: prefab/effect/magical/sources/materials/fire1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/fire4_png
+    Info_89:
+      Name: prefab/effect/magical/sources/materials/fire2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/smoke2_png
+    Info_90:
+      Name: prefab/effect/magical/sources/materials/flak1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/flak1_png
+    Info_91:
+      Name: prefab/effect/magical/sources/materials/flak2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/flak1_png
+    Info_92:
+      Name: prefab/effect/magical/sources/materials/flak3_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/flak1_png
+    Info_93:
+      Name: prefab/effect/magical/sources/materials/flash1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/flash1_png
+    Info_94:
+      Name: prefab/effect/magical/sources/materials/flash2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/flash2_png
+    Info_95:
+      Name: prefab/effect/magical/sources/materials/greenglass_mat
+      Dependencies: {}
+    Info_96:
+      Name: prefab/effect/magical/sources/materials/ground_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/brick_1_png
+        Dependency_1: prefab/effect/magical/sources/textures/normalmap_png
+    Info_97:
+      Name: prefab/effect/magical/sources/materials/ground2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/ground_png
+        Dependency_1: prefab/effect/magical/sources/textures/ground2_normal_png
+    Info_98:
+      Name: prefab/effect/magical/sources/materials/ice_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/shader/rimlight_shader
+        Dependency_1: prefab/effect/magical/sources/textures/lava_rock_normal_png
+        Dependency_2: prefab/effect/magical/sources/textures/particle_psd
+    Info_99:
+      Name: prefab/effect/magical/sources/materials/lavarock_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/shader/rimlight_shader
+        Dependency_1: prefab/effect/magical/sources/textures/lava_rock_png
+        Dependency_2: prefab/effect/magical/sources/textures/lava_rock_normal_png
+    Info_100:
+      Name: prefab/effect/magical/sources/materials/lighting1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/lighting1_png
+    Info_101:
+      Name: prefab/effect/magical/sources/materials/lighting2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/lighting2_png
+    Info_102:
+      Name: prefab/effect/magical/sources/materials/lightingcloud_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/lightingcloud_png
+    Info_103:
+      Name: prefab/effect/magical/sources/materials/lineup_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/line_png
+    Info_104:
+      Name: prefab/effect/magical/sources/materials/magic_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/ring1_png
+    Info_105:
+      Name: prefab/effect/magical/sources/materials/magical1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/magical1_png
+    Info_106:
+      Name: prefab/effect/magical/sources/materials/magical2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/magical1_png
+    Info_107:
+      Name: prefab/effect/magical/sources/materials/magicsign_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/magical1_png
+    Info_108:
+      Name: prefab/effect/magical/sources/materials/no name_mat
+      Dependencies: {}
+    Info_109:
+      Name: prefab/effect/magical/sources/materials/ring2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/ring2_png
+    Info_110:
+      Name: prefab/effect/magical/sources/materials/ring3_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/ring4_png
+    Info_111:
+      Name: prefab/effect/magical/sources/materials/smoke_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/smoke1_png
+    Info_112:
+      Name: prefab/effect/magical/sources/materials/smoke1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/smoke_png
+    Info_113:
+      Name: prefab/effect/magical/sources/materials/stomp1_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/stomp3_png
+        Dependency_1: prefab/effect/magical/sources/textures/stomp_hight_png
+    Info_114:
+      Name: prefab/effect/magical/sources/materials/stomp2_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/stomp2_png
+    Info_115:
+      Name: prefab/effect/magical/sources/materials/stomp4_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/stomp4_png
+    Info_116:
+      Name: prefab/effect/magical/sources/materials/stomplight_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/stomp3_png
+    Info_117:
+      Name: prefab/effect/magical/sources/materials/water_mat
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/textures/water_png
+    Info_118:
+      Name: prefab/effect/magical/sources/shader/rimlight_shader
+      Dependencies: {}
+    Info_119:
+      Name: prefab/effect/magical/sources/textures/brick_1_png
+      Dependencies: {}
+    Info_120:
+      Name: prefab/effect/magical/sources/textures/bubble_png
+      Dependencies: {}
+    Info_121:
+      Name: prefab/effect/magical/sources/textures/earth_png
+      Dependencies: {}
+    Info_122:
+      Name: prefab/effect/magical/sources/textures/earth_normal_png
+      Dependencies: {}
+    Info_123:
+      Name: prefab/effect/magical/sources/textures/earth_normal2_png
+      Dependencies: {}
+    Info_124:
+      Name: prefab/effect/magical/sources/textures/electricle_png
+      Dependencies: {}
+    Info_125:
+      Name: prefab/effect/magical/sources/textures/fire1_png
+      Dependencies: {}
+    Info_126:
+      Name: prefab/effect/magical/sources/textures/fire2_png
+      Dependencies: {}
+    Info_127:
+      Name: prefab/effect/magical/sources/textures/fire3_png
+      Dependencies: {}
+    Info_128:
+      Name: prefab/effect/magical/sources/textures/fire4_png
+      Dependencies: {}
+    Info_129:
+      Name: prefab/effect/magical/sources/textures/flak1_png
+      Dependencies: {}
+    Info_130:
+      Name: prefab/effect/magical/sources/textures/flash1_png
+      Dependencies: {}
+    Info_131:
+      Name: prefab/effect/magical/sources/textures/flash2_png
+      Dependencies: {}
+    Info_132:
+      Name: prefab/effect/magical/sources/textures/ground_png
+      Dependencies: {}
+    Info_133:
+      Name: prefab/effect/magical/sources/textures/ground2_normal_png
+      Dependencies: {}
+    Info_134:
+      Name: prefab/effect/magical/sources/textures/lava_rock_png
+      Dependencies: {}
+    Info_135:
+      Name: prefab/effect/magical/sources/textures/lava_rock_normal_png
+      Dependencies: {}
+    Info_136:
+      Name: prefab/effect/magical/sources/textures/lighting1_png
+      Dependencies: {}
+    Info_137:
+      Name: prefab/effect/magical/sources/textures/lighting2_png
+      Dependencies: {}
+    Info_138:
+      Name: prefab/effect/magical/sources/textures/lightingcloud_png
+      Dependencies: {}
+    Info_139:
+      Name: prefab/effect/magical/sources/textures/line_png
+      Dependencies: {}
+    Info_140:
+      Name: prefab/effect/magical/sources/textures/magical1_png
+      Dependencies: {}
+    Info_141:
+      Name: prefab/effect/magical/sources/textures/noise_png
+      Dependencies: {}
+    Info_142:
+      Name: prefab/effect/magical/sources/textures/normalmap_png
+      Dependencies: {}
+    Info_143:
+      Name: prefab/effect/magical/sources/textures/particle_psd
+      Dependencies: {}
+    Info_144:
+      Name: prefab/effect/magical/sources/textures/ring1_png
+      Dependencies: {}
+    Info_145:
+      Name: prefab/effect/magical/sources/textures/ring2_png
+      Dependencies: {}
+    Info_146:
+      Name: prefab/effect/magical/sources/textures/ring3_png
+      Dependencies: {}
+    Info_147:
+      Name: prefab/effect/magical/sources/textures/ring4_png
+      Dependencies: {}
+    Info_148:
+      Name: prefab/effect/magical/sources/textures/smoke_png
+      Dependencies: {}
+    Info_149:
+      Name: prefab/effect/magical/sources/textures/smoke1_png
+      Dependencies: {}
+    Info_150:
+      Name: prefab/effect/magical/sources/textures/smoke2_png
+      Dependencies: {}
+    Info_151:
+      Name: prefab/effect/magical/sources/textures/smoke3_png
+      Dependencies: {}
+    Info_152:
+      Name: prefab/effect/magical/sources/textures/stomp1_png
+      Dependencies: {}
+    Info_153:
+      Name: prefab/effect/magical/sources/textures/stomp2_png
+      Dependencies: {}
+    Info_154:
+      Name: prefab/effect/magical/sources/textures/stomp3_png
+      Dependencies: {}
+    Info_155:
+      Name: prefab/effect/magical/sources/textures/stomp4_png
+      Dependencies: {}
+    Info_156:
+      Name: prefab/effect/magical/sources/textures/stomp_hight_png
+      Dependencies: {}
+    Info_157:
+      Name: prefab/effect/magical/sources/textures/water_png
+      Dependencies: {}
+    Info_158:
       Name: prefab/effect/wind/new material_mat
       Dependencies:
         Dependency_0: prefab/effect/wind/wind_png
-    Info_30:
+    Info_159:
       Name: prefab/effect/wind/wind_png
       Dependencies: {}
-    Info_31:
+    Info_160:
       Name: prefab/effect/wind/wind_prefab
       Dependencies:
         Dependency_0: prefab/effect/fire/new material_mat
-    Info_32:
+    Info_161:
       Name: prefab/hero/ali/ahri@taunt_fbm/materials/ahri_base_tx_cm_mat
       Dependencies: {}
-    Info_33:
+    Info_162:
       Name: prefab/hero/ali/materials/ahri_base_tx_cm_mat
       Dependencies: {}
-    Info_34:
+    Info_163:
       Name: prefab/hero/houyi/hero_houyi_mat
       Dependencies:
         Dependency_0: prefab/hero/houyi/hero_houyi_tga
-    Info_35:
+    Info_164:
       Name: prefab/hero/houyi/hero_houyi_tga
       Dependencies: {}
-    Info_36:
+    Info_165:
       Name: prefab/hero/houyi/houyi_prefab
       Dependencies:
         Dependency_0: prefab/hero/houyi/hero_houyi_mat
-    Info_37:
+    Info_166:
       Name: prefab/hero/jinmumu/materials/sadmummy_mat
       Dependencies: {}
-    Info_38:
+    Info_167:
       Name: prefab/hero/yase/hero_yase_mat
       Dependencies:
         Dependency_0: prefab/hero/yase/hero_yase_tga
-    Info_39:
+    Info_168:
       Name: prefab/hero/yase/hero_yase_tga
       Dependencies: {}
-    Info_40:
+    Info_169:
       Name: prefab/hero/yase/yase_prefab
       Dependencies:
         Dependency_0: prefab/hero/yase/hero_yase_mat
-    Info_41:
+    Info_170:
       Name: prefab/monsters/yeguai_prefab
       Dependencies: {}
-    Info_42:
+    Info_171:
       Name: prefab/scene/5v5/3v3_b_plant_tga
       Dependencies: {}
-    Info_43:
+    Info_172:
       Name: prefab/scene/5v5/5v5_png
       Dependencies: {}
-    Info_44:
+    Info_173:
       Name: prefab/scene/5v5/5v5_2_png
       Dependencies: {}
-    Info_45:
+    Info_174:
       Name: prefab/scene/5v5/lom/res/map/challengemap/challengemapa/materials/chmapa_sunshine_mat
       Dependencies: {}
-    Info_46:
+    Info_175:
       Name: prefab/scene/5v5/lom/res/map/challengemap/challengemapa/materials/divinearena_sunshine_mat
       Dependencies: {}
-    Info_47:
+    Info_176:
       Name: prefab/scene/5v5/lom/res/map/divinearena/3vs3_lightsetting_prefab
       Dependencies: {}
-    Info_48:
+    Info_177:
       Name: prefab/scene/5v5/lom/res/map/divinearena/plane_prefab
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/challengemap/challengemapa/materials/chmapa_sunshine_mat
@@ -175,115 +803,127 @@ AssetBundleManifest:
         Dependency_5: prefab/scene/5v5/lom/res/map/divinearena/materials/rocktile_mat
         Dependency_6: prefab/scene/5v5/lom/res/map/divinearena/materials/upospace_shine_mat
         Dependency_7: prefab/scene/5v5/lom/res/map/divinearena/mesh/materials/divinearena_new_mat
-    Info_49:
+    Info_178:
       Name: prefab/scene/5v5/lom/res/map/divinearena/materials/divinearena_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/divinearena_png
-    Info_50:
+    Info_179:
       Name: prefab/scene/5v5/lom/res/map/divinearena/materials/grasstile_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/grasstile_png
-    Info_51:
+    Info_180:
       Name: prefab/scene/5v5/lom/res/map/divinearena/materials/naturalalpha_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/naturalalpha_tga
-    Info_52:
+    Info_181:
       Name: prefab/scene/5v5/lom/res/map/divinearena/materials/rocktile_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/rocktile_png
-    Info_53:
+    Info_182:
       Name: prefab/scene/5v5/lom/res/map/divinearena/materials/upospace_shine_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/upospace_shine_png
-    Info_54:
+    Info_183:
       Name: prefab/scene/5v5/lom/res/map/divinearena/mesh/materials/divinearena_new_mat
       Dependencies: {}
-    Info_55:
+    Info_184:
       Name: prefab/scene/5v5/lom/res/map/divinearena/textures/divinearena_png
       Dependencies: {}
-    Info_56:
+    Info_185:
       Name: prefab/scene/5v5/lom/res/map/divinearena/textures/grasstile_png
       Dependencies: {}
-    Info_57:
+    Info_186:
       Name: prefab/scene/5v5/lom/res/map/divinearena/textures/naturalalpha_tga
       Dependencies: {}
-    Info_58:
+    Info_187:
       Name: prefab/scene/5v5/lom/res/map/divinearena/textures/rocktile_png
       Dependencies: {}
-    Info_59:
+    Info_188:
       Name: prefab/scene/5v5/lom/res/map/divinearena/textures/upospace_shine_png
       Dependencies: {}
-    Info_60:
+    Info_189:
       Name: prefab/scene/5v5/materials/3v3_b_plant_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/3v3_b_plant_tga
-    Info_61:
+    Info_190:
       Name: prefab/scene/5v5/materials/5v5_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/5v5_2_png
-    Info_62:
+    Info_191:
       Name: prefab/scene/5v5/materials/5v5_2_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/5v5_png
-    Info_63:
+    Info_192:
       Name: prefab/scene/5v5/materials/divinearena_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/divinearena_png
-    Info_64:
+    Info_193:
       Name: prefab/scene/5v5/materials/grasstile_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/grasstile_png
-    Info_65:
+    Info_194:
       Name: prefab/scene/5v5/materials/naturalalpha_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/naturalalpha_tga
-    Info_66:
+    Info_195:
       Name: prefab/scene/5v5/materials/rocktile_mat
       Dependencies:
         Dependency_0: prefab/scene/5v5/lom/res/map/divinearena/textures/rocktile_png
-    Info_67:
+    Info_196:
       Name: prefab/ui/loginview_prefab
       Dependencies:
         Dependency_0: textrue/bg_png
-    Info_68:
+    Info_197:
       Name: prefab/ui/matchview_prefab
       Dependencies:
         Dependency_0: textrue/bg_png
-    Info_69:
+    Info_198:
       Name: prefab/ui/notifyview_prefab
       Dependencies:
         Dependency_0: textrue/bg_png
-    Info_70:
+    Info_199:
       Name: prefab/ui/registerview_prefab
       Dependencies:
         Dependency_0: textrue/bg_png
-    Info_71:
+    Info_200:
       Name: prefab/ui/resprondnotifyview_prefab
       Dependencies:
         Dependency_0: textrue/bg_png
-    Info_72:
+    Info_201:
       Name: textrue/bg_png
       Dependencies: {}
-    Info_73:
+    Info_202:
+      Name: textrue/bloodstrip_bg_png
+      Dependencies: {}
+    Info_203:
+      Name: textrue/bloodstrip_xue_png
+      Dependencies: {}
+    Info_204:
       Name: textrue/bound_png
       Dependencies: {}
-    Info_74:
+    Info_205:
+      Name: textrue/quxiao_png
+      Dependencies: {}
+    Info_206:
+      Name: textrue/quxiao2_png
+      Dependencies: {}
+    Info_207:
       Name: werewolf/statusindicators/prefabs/anglemissile/angle missile basic_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/anglemissilebasic/missilebody_mat
-    Info_75:
+    Info_208:
       Name: werewolf/statusindicators/prefabs/anglemissile/dragon arrow_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/magiccrossbow/crossbow_mat
-    Info_76:
+    Info_209:
       Name: werewolf/statusindicators/prefabs/anglemissile/fire missile_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/firemissile/missilebody_mat
-    Info_77:
+    Info_210:
       Name: werewolf/statusindicators/prefabs/anglemissile/ice arrow_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/magiccrossbow/crossbow2_mat
-    Info_78:
+    Info_211:
       Name: werewolf/statusindicators/prefabs/cone/chaosblast_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conebase_mat
@@ -291,7 +931,7 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conedeco_mat
         Dependency_3: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conelborder_mat
         Dependency_4: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conerborder_mat
-    Info_79:
+    Info_212:
       Name: werewolf/statusindicators/prefabs/cone/cone basic_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conebase_mat
@@ -299,7 +939,7 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conedeco_mat
         Dependency_3: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conelborder_mat
         Dependency_4: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conerborder_mat
-    Info_80:
+    Info_213:
       Name: werewolf/statusindicators/prefabs/cone/fire blast_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conebase_mat
@@ -307,7 +947,7 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conedeco_mat
         Dependency_3: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conelborder_mat
         Dependency_4: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conerborder_mat
-    Info_81:
+    Info_214:
       Name: werewolf/statusindicators/prefabs/cone/frost blast_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conebase_mat
@@ -315,33 +955,33 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conedeco1_mat
         Dependency_3: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conelborder1_mat
         Dependency_4: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conerborder1_mat
-    Info_82:
+    Info_215:
       Name: werewolf/statusindicators/prefabs/linemissile/line missile basic 1_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic1/missilebody_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic1/missilehead_mat
-    Info_83:
+    Info_216:
       Name: werewolf/statusindicators/prefabs/linemissile/line missile basic 2_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic2/missilebody_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic2/missilehead_mat
-    Info_84:
+    Info_217:
       Name: werewolf/statusindicators/prefabs/linemissile/line missile basic 3_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic3/missilebody_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic3/missilehead_mat
-    Info_85:
+    Info_218:
       Name: werewolf/statusindicators/prefabs/linemissile/line missile basic 4_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic4/missilebody_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic4/missilehead_mat
-    Info_86:
+    Info_219:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/anglemissilebasic/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfilllinear_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/anglemissile/missile4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_87:
+    Info_220:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/firemissile/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
@@ -349,7 +989,7 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/textures/splattextures/anglemissile/missile3_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_4: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_88:
+    Info_221:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/magiccrossbow/crossbow_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
@@ -357,7 +997,7 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/textures/splattextures/anglemissile/crossbow1_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_4: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_89:
+    Info_222:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/anglemissile/magiccrossbow/crossbow2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
@@ -365,190 +1005,190 @@ AssetBundleManifest:
         Dependency_2: werewolf/statusindicators/textures/splattextures/anglemissile/crossbow2_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_4: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_90:
+    Info_223:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conebase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conebase_png
-    Info_91:
+    Info_224:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conecenter_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorlineardistortcolor_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conecenter_png
-    Info_92:
+    Info_225:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conedeco_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
-    Info_93:
+    Info_226:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conelborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderl_png
-    Info_94:
+    Info_227:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/chaosblast/conerborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderr_png
-    Info_95:
+    Info_228:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conebase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillcone_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/cone/conebase_png
-    Info_96:
+    Info_229:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conecenter_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/cone/conecenter_png
-    Info_97:
+    Info_230:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conedeco_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillcone_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circledeco3_png
-    Info_98:
+    Info_231:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conelborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/cone/coneborderl_png
-    Info_99:
+    Info_232:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/conebasic/conerborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/cone/coneborderr_png
-    Info_100:
+    Info_233:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conebase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conebase_png
-    Info_101:
+    Info_234:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conecenter_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorlineardistortcolor_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conecenter_png
-    Info_102:
+    Info_235:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conedeco_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
-    Info_103:
+    Info_236:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conelborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderl_png
-    Info_104:
+    Info_237:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/fireblast/conerborder_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderr_png
-    Info_105:
+    Info_238:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conebase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conebase_png
-    Info_106:
+    Info_239:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conecenter_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorlineardistortcolor_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/conecenter_png
-    Info_107:
+    Info_240:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conedeco1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
-    Info_108:
+    Info_241:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conelborder1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderl_png
-    Info_109:
+    Info_242:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/cone/frostblast/conerborder1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/cone/coneborderr_png
-    Info_110:
+    Info_243:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic1/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_111:
+    Info_244:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic1/missilehead_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missilehead1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_112:
+    Info_245:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic2/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/linemissile/missiletail2_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_113:
+    Info_246:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic2/missilehead_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missilehead1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/linemissile/missilehead2_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_114:
+    Info_247:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic3/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_115:
+    Info_248:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic3/missilehead_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missilehead1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/linemissile/missilehead3_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_116:
+    Info_249:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic4/missilebody_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/linemissile/missiletail4_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_117:
+    Info_250:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/linemissile/linemissilebasic4/missilehead_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/linemissile/missilehead1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/linemissile/missilehead4_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_118:
+    Info_251:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/chaos
         aura/pointbase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlebase_png
-    Info_119:
+    Info_252:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/chaos
         aura/pointcrosshair_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_120:
+    Info_253:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/chaos
         aura/pointdeco_mat
       Dependencies:
@@ -556,156 +1196,156 @@ AssetBundleManifest:
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circledeco3_png
-    Info_121:
+    Info_254:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointbase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlebase_png
-    Info_122:
+    Info_255:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointcharge1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecharge1_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_123:
+    Info_256:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointcrosshair_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorholoradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_124:
+    Info_257:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointdeco1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorradialdistortcolor_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circledeco1_png
-    Info_125:
+    Info_258:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointbase_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlebase_png
-    Info_126:
+    Info_259:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointcharge_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecharge2_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_127:
+    Info_260:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointcrosshair_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_128:
+    Info_261:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointdeco_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circledeco3_png
-    Info_129:
+    Info_262:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/range1_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range1_png
-    Info_130:
+    Info_263:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/range2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range2_png
-    Info_131:
+    Info_264:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/range3_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/range3_png
-    Info_132:
+    Info_265:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/rangebasic_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/range/rangesimple_png
-    Info_133:
+    Info_266:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/rangesmall_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise2_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/range/range_png
-    Info_134:
+    Info_267:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointbase2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlebase_png
-    Info_135:
+    Info_268:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointcharge2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise1_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecharge2_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_136:
+    Info_269:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointcrosshair2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorradialdistortcolor_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
-    Info_137:
+    Info_270:
       Name: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointdeco2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
         Dependency_1: werewolf/statusindicators/textures/distorttextures/noise4_png
         Dependency_2: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
         Dependency_3: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
-    Info_138:
+    Info_271:
       Name: werewolf/statusindicators/prefabs/materials/status/status6bar_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar1_png
-    Info_139:
+    Info_272:
       Name: werewolf/statusindicators/prefabs/materials/status/statusbasic_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar6_png
-    Info_140:
+    Info_273:
       Name: werewolf/statusindicators/prefabs/materials/status/statusbasic2_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar5_png
-    Info_141:
+    Info_274:
       Name: werewolf/statusindicators/prefabs/materials/status/statuschargeexample_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar4_png
-    Info_142:
+    Info_275:
       Name: werewolf/statusindicators/prefabs/materials/status/statusdots_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar2_png
-    Info_143:
+    Info_276:
       Name: werewolf/statusindicators/prefabs/materials/status/statusgradient_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar4_png
-    Info_144:
+    Info_277:
       Name: werewolf/statusindicators/prefabs/materials/status/statusgradientdotted_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar3_png
-    Info_145:
+    Info_278:
       Name: werewolf/statusindicators/prefabs/materials/status/statusmanaexample_mat
       Dependencies:
         Dependency_0: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
         Dependency_1: werewolf/statusindicators/textures/splattextures/status/statusbar6_png
-    Info_146:
+    Info_279:
       Name: werewolf/statusindicators/prefabs/point/chaos aura_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/point/chaos
@@ -714,245 +1354,230 @@ AssetBundleManifest:
           aura/pointcrosshair_mat
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/point/chaos
           aura/pointdeco_mat
-    Info_147:
+    Info_280:
       Name: werewolf/statusindicators/prefabs/point/fireball_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointbase_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointcrosshair_mat
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/point/fireball/pointdeco1_mat
-    Info_148:
+    Info_281:
       Name: werewolf/statusindicators/prefabs/point/frost nova_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointbase2_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointcharge2_mat
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/range/frostnova/pointdeco2_mat
-    Info_149:
+    Info_282:
       Name: werewolf/statusindicators/prefabs/point/point basic_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointbase_mat
         Dependency_1: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointcharge_mat
         Dependency_2: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointcrosshair_mat
         Dependency_3: werewolf/statusindicators/prefabs/materials/spellindicators/point/targetbasic/pointdeco_mat
-    Info_150:
+    Info_283:
       Name: werewolf/statusindicators/prefabs/range/range1_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/range1_mat
-    Info_151:
+    Info_284:
       Name: werewolf/statusindicators/prefabs/range/range2_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/range2_mat
-    Info_152:
+    Info_285:
       Name: werewolf/statusindicators/prefabs/range/range3_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/range3_mat
-    Info_153:
+    Info_286:
       Name: werewolf/statusindicators/prefabs/range/rangebasic_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/rangebasic_mat
-    Info_154:
+    Info_287:
       Name: werewolf/statusindicators/prefabs/range/rangesmall_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/spellindicators/range/rangesmall_mat
-    Info_155:
+    Info_288:
       Name: werewolf/statusindicators/prefabs/status/status 6bar_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/status6bar_mat
-    Info_156:
+    Info_289:
       Name: werewolf/statusindicators/prefabs/status/status basic 2_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusbasic2_mat
-    Info_157:
+    Info_290:
       Name: werewolf/statusindicators/prefabs/status/status basic_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusbasic_mat
-    Info_158:
+    Info_291:
       Name: werewolf/statusindicators/prefabs/status/status charge example_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statuschargeexample_mat
-    Info_159:
+    Info_292:
       Name: werewolf/statusindicators/prefabs/status/status dots_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusdots_mat
-    Info_160:
+    Info_293:
       Name: werewolf/statusindicators/prefabs/status/status gradient dotted_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusgradientdotted_mat
-    Info_161:
+    Info_294:
       Name: werewolf/statusindicators/prefabs/status/status gradient_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusgradient_mat
-    Info_162:
+    Info_295:
       Name: werewolf/statusindicators/prefabs/status/status mana example_prefab
       Dependencies:
         Dependency_0: werewolf/statusindicators/prefabs/materials/status/statusmanaexample_mat
-    Info_163:
+    Info_296:
       Name: werewolf/statusindicators/scripts/shaders/projectorbasic_shader
       Dependencies: {}
-    Info_164:
+    Info_297:
       Name: werewolf/statusindicators/scripts/shaders/projectorconedistort_shader
       Dependencies: {}
-    Info_165:
+    Info_298:
       Name: werewolf/statusindicators/scripts/shaders/projectorfillcone_shader
       Dependencies: {}
-    Info_166:
+    Info_299:
       Name: werewolf/statusindicators/scripts/shaders/projectorfilllinear_shader
       Dependencies: {}
-    Info_167:
+    Info_300:
       Name: werewolf/statusindicators/scripts/shaders/projectorfillradial_shader
       Dependencies: {}
-    Info_168:
+    Info_301:
       Name: werewolf/statusindicators/scripts/shaders/projectorfillradialdistort_shader
       Dependencies: {}
-    Info_169:
+    Info_302:
       Name: werewolf/statusindicators/scripts/shaders/projectorholocone_shader
       Dependencies: {}
-    Info_170:
+    Info_303:
       Name: werewolf/statusindicators/scripts/shaders/projectorhololinear_shader
       Dependencies: {}
-    Info_171:
+    Info_304:
       Name: werewolf/statusindicators/scripts/shaders/projectorholoradial_shader
       Dependencies: {}
-    Info_172:
+    Info_305:
       Name: werewolf/statusindicators/scripts/shaders/projectorlineardistortcolor_shader
       Dependencies: {}
-    Info_173:
+    Info_306:
       Name: werewolf/statusindicators/scripts/shaders/projectorradialdistortcolor_shader
       Dependencies: {}
-    Info_174:
+    Info_307:
       Name: werewolf/statusindicators/textures/distorttextures/noise1_png
       Dependencies: {}
-    Info_175:
+    Info_308:
       Name: werewolf/statusindicators/textures/distorttextures/noise2_png
       Dependencies: {}
-    Info_176:
+    Info_309:
       Name: werewolf/statusindicators/textures/distorttextures/noise3_png
       Dependencies: {}
-    Info_177:
+    Info_310:
       Name: werewolf/statusindicators/textures/distorttextures/noise4_png
       Dependencies: {}
-    Info_178:
+    Info_311:
       Name: werewolf/statusindicators/textures/distorttextures/noise5_png
       Dependencies: {}
-    Info_179:
+    Info_312:
       Name: werewolf/statusindicators/textures/splattextures/anglemissile/crossbow1_png
       Dependencies: {}
-    Info_180:
+    Info_313:
       Name: werewolf/statusindicators/textures/splattextures/anglemissile/crossbow2_png
       Dependencies: {}
-    Info_181:
+    Info_314:
       Name: werewolf/statusindicators/textures/splattextures/anglemissile/missile2_png
       Dependencies: {}
-    Info_182:
+    Info_315:
       Name: werewolf/statusindicators/textures/splattextures/anglemissile/missile3_png
       Dependencies: {}
-    Info_183:
+    Info_316:
       Name: werewolf/statusindicators/textures/splattextures/anglemissile/missile4_png
       Dependencies: {}
-    Info_184:
+    Info_317:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlebase_png
       Dependencies: {}
-    Info_185:
+    Info_318:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlecharge1_png
       Dependencies: {}
-    Info_186:
+    Info_319:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlecharge2_png
       Dependencies: {}
-    Info_187:
+    Info_320:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlecharge3_png
       Dependencies: {}
-    Info_188:
+    Info_321:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlecharge4_png
       Dependencies: {}
-    Info_189:
+    Info_322:
       Name: werewolf/statusindicators/textures/splattextures/circle/circlecrosshair_png
       Dependencies: {}
-    Info_190:
+    Info_323:
       Name: werewolf/statusindicators/textures/splattextures/circle/circledeco1_png
       Dependencies: {}
-    Info_191:
+    Info_324:
       Name: werewolf/statusindicators/textures/splattextures/circle/circledeco2_png
       Dependencies: {}
-    Info_192:
+    Info_325:
       Name: werewolf/statusindicators/textures/splattextures/circle/circledeco3_png
       Dependencies: {}
-    Info_193:
+    Info_326:
       Name: werewolf/statusindicators/textures/splattextures/cone/conebase_png
       Dependencies: {}
-    Info_194:
+    Info_327:
       Name: werewolf/statusindicators/textures/splattextures/cone/coneborderl_png
       Dependencies: {}
-    Info_195:
+    Info_328:
       Name: werewolf/statusindicators/textures/splattextures/cone/coneborderr_png
       Dependencies: {}
-    Info_196:
+    Info_329:
       Name: werewolf/statusindicators/textures/splattextures/cone/conecenter_png
       Dependencies: {}
-    Info_197:
+    Info_330:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missilehead1_png
       Dependencies: {}
-    Info_198:
+    Info_331:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missilehead2_png
       Dependencies: {}
-    Info_199:
+    Info_332:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missilehead3_png
       Dependencies: {}
-    Info_200:
+    Info_333:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missilehead4_png
       Dependencies: {}
-    Info_201:
+    Info_334:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missiletail1_png
       Dependencies: {}
-    Info_202:
+    Info_335:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missiletail2_png
       Dependencies: {}
-    Info_203:
+    Info_336:
       Name: werewolf/statusindicators/textures/splattextures/linemissile/missiletail4_png
       Dependencies: {}
-    Info_204:
+    Info_337:
       Name: werewolf/statusindicators/textures/splattextures/range/range_png
       Dependencies: {}
-    Info_205:
+    Info_338:
       Name: werewolf/statusindicators/textures/splattextures/range/range1_png
       Dependencies: {}
-    Info_206:
+    Info_339:
       Name: werewolf/statusindicators/textures/splattextures/range/range2_png
       Dependencies: {}
-    Info_207:
+    Info_340:
       Name: werewolf/statusindicators/textures/splattextures/range/range3_png
       Dependencies: {}
-    Info_208:
+    Info_341:
       Name: werewolf/statusindicators/textures/splattextures/range/rangesimple_png
       Dependencies: {}
-    Info_209:
+    Info_342:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar1_png
       Dependencies: {}
-    Info_210:
+    Info_343:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar2_png
       Dependencies: {}
-    Info_211:
+    Info_344:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar3_png
       Dependencies: {}
-    Info_212:
+    Info_345:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar4_png
       Dependencies: {}
-    Info_213:
+    Info_346:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar5_png
       Dependencies: {}
-    Info_214:
+    Info_347:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar6_png
-      Dependencies: {}
-    Info_215:
-      Name: textrue/bloodstrip_bg_png
-      Dependencies: {}
-    Info_216:
-      Name: textrue/bloodstrip_xue_png
-      Dependencies: {}
-    Info_217:
-      Name: textrue/quxiao_png
-      Dependencies: {}
-    Info_218:
-      Name: prefab/effect/bullet/houyi_pengzhuang_prefab
-      Dependencies: {}
-    Info_219:
-      Name: textrue/quxiao2_png
       Dependencies: {}

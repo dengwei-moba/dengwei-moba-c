@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3142599211
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2d77f092a69895b10015cffc7583f7b1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d1ae6e26fb0b4d11fccd18da598542fa
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Materials/StompLight.mat
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/textures/stomp3_png

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2058779399
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6189f14f73fbb932ce37ad4e22fa855c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cc7b69794a2bdada249e557ebbfded10
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Shader/Rimlight.shader
+Dependencies: []

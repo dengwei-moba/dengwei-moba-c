@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 523974249
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 867103c8b57dac31ac691c36e9414885
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d1ae6e26fb0b4d11fccd18da598542fa
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Materials/Ring3.mat
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/textures/ring4_png

@@ -593,7 +593,7 @@ namespace TrueSync {
                 }
 
                 TrueSyncBehaviour bh = (TrueSyncBehaviour)tsmb.trueSyncBehavior;
-
+				/***
                 if (realOwnerId) {
                     bh.ownerIndex = bh.owner.Id;
                 } else {
@@ -610,7 +610,7 @@ namespace TrueSync {
                 } else {
                     bh.ownerIndex = -1;
                 }
-
+				***/
                 tsmb.owner = bh.owner;
             }
 

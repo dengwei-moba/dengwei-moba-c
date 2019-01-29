@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3445466278
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c63f6b39dedf108cab1219b803eac494
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/brick_1.png
+Dependencies: []

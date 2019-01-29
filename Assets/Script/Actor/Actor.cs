@@ -229,7 +229,7 @@ public abstract class Actor : TrueSyncBehaviour
         InitStateMachine();
         InitCurState();
         InitStateTransLimit();
-        InitWillUsedPrefabs();
+		//InitWillUsedPrefabs();
         pengzhuanweizhi = _AssetManager.GetGameObject("prefab/effect/bullet/pengzhuanweizhi_prefab");
         pengzhuanfaxiangliang1 = _AssetManager.GetGameObject("prefab/effect/bullet/pengzhuanfaxiangliang_prefab");
         pengzhuanfaxiangliang2 = _AssetManager.GetGameObject("prefab/effect/bullet/pengzhuanfaxiangliang_prefab");

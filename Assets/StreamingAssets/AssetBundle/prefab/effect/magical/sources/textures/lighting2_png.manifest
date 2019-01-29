@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 816077970
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2bab869284729ca7f6e712ae6653ef6f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/lighting2.png
+Dependencies: []

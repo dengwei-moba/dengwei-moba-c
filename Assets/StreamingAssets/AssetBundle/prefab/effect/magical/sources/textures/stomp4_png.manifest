@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3856554966
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 095a3d1be39d407691b2f5b802aea982
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/Sources/Textures/stomp4.png
+Dependencies: []

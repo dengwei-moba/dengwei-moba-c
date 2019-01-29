@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2587296257
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a32c59eedc53e152f562d20262392922
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 266e57f61d7496699b6a40fa7d11bda9
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/Effect/Magical/FX/Component/Fire_Simple.prefab
+Dependencies:
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/fire1_mat
+- G:/sj/youyouzai-moba/Assets/StreamingAssets/AssetBundle/prefab/effect/magical/sources/materials/flak1_mat
