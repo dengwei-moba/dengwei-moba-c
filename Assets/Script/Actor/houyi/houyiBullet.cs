@@ -39,7 +39,7 @@ public class houyiBullet : TrueSyncBehaviour
 	void Awake()
 	{
 		Angle = TSVector.zero;
-		Speed = (FP)0.3f;
+		Speed = (FP)0.5f;
 		//mAllTSTransform = GetComponent<TSTransform>();
 	}
 
@@ -88,6 +88,11 @@ public class houyiBullet : TrueSyncBehaviour
 				mActor.mActorAttr.Hp -= 10;
 				TrueSyncManager.SyncedDestroy(gameObject);
 			}
+		}
+		else if (otherLayerMask == LayerMask.GetMask("Monsters"))
+		{
+			YeGuaiAI mYeGuaiAI = other.gameObject.GetComponent<YeGuaiAI>();
+			mYeGuaiAI.AddHp(-10, ownerIndex);
 		}
 		else if (otherLayerMask == LayerMask.GetMask("GroundWall"))
 		{

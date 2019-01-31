@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 57859516
+CRC: 2155554171
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -1581,3 +1581,9 @@ AssetBundleManifest:
     Info_347:
       Name: werewolf/statusindicators/textures/splattextures/status/statusbar6_png
       Dependencies: {}
+    Info_348:
+      Name: prefab/effect/bullet/yeguaibullet_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/lighting2_mat
+        Dependency_2: prefab/effect/magical/sources/materials/ring3_mat

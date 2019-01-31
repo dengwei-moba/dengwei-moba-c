@@ -83,10 +83,10 @@ enum InputType
 message PB_ClientInput
 {
 	InputType InputType		= 1;	//
-	int32 Angle_X			= 2;	//InputType_MOVE_ANGLE时
-	int32 Angle_Y			= 3;	//InputType_MOVE_ANGLE时
+	int32 Angle_X			= 2;	//InputType_MOVE_ANGLE,InputType_KEY_ANGLE时
+	int32 Angle_Y			= 3;	//
 	int32 Key				= 4;	//
-	int32 Pos_X				= 5;	//
+	int32 Pos_X				= 5;	//InputType_CLICK_XY时
 	int32 Pos_Y				= 6;	//
 }
 	

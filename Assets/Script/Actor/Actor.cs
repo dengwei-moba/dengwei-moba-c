@@ -55,6 +55,7 @@ public abstract class Actor : TrueSyncBehaviour
     /// </summary>
     public ActorAttr mActorAttr = new ActorAttr();
 
+	public bool IsDeath { get{ return mActorAttr.Hp<=0;} }
 	/// <summary>
 	/// 血条显示
 	/// </summary>

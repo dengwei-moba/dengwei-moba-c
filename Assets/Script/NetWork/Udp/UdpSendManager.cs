@@ -80,4 +80,10 @@ public class UdpSendManager : ScriptBase
 		mClientInputs.Inputs.Add(oneInput);
 		_UnityUdpSocket.Send(MsgID.C2SInputInfo, mClientInputs);
 	}
+
+	public void SendFightEnd()
+	{
+		PB_C2SFightSOut mFightSOut = new PB_C2SFightSOut();
+		_UnityUdpSocket.Send(MsgID.C2SFightEnd, mFightSOut);
+	}
 }

@@ -95,6 +95,7 @@ namespace TrueSync {
         void OnS2CFightEnd(KcpNetPack pack)
         {
             FightEnd();
+			LoadingManager.LoadSceneAsync(SceneConfig.InitAgain);
         }
         public void FightEnd()
         {
@@ -431,6 +432,8 @@ namespace TrueSync {
             //==========================================================================
             mFrameData = new FrameData();
             mLockStep = gameObject.AddComponent<LockStep>();
+			gameObject.AddComponent<GameProcessManager_Dota>();
+			gameObject.AddComponent<MyTimerDriver>();
 
             PB_MatchTeamFight_FMS2GS2C mMatchTeamFight = (PB_MatchTeamFight_FMS2GS2C)NetData.Instance.Query(MsgID.S2CMatch, (uint)MatchMsgID.Fms2Gs2CMatchFight);
             FRS2C_Host = mMatchTeamFight.Frs2Chost;
