@@ -20,7 +20,7 @@ namespace TrueSync {
         private uint fightroomid;
         private int randomseed;
         private int fps;
-        private uint playeridx;
+        private int playeridx;
         private string hellokey;
 
         bool _isLoginGameServer = false;
@@ -32,7 +32,7 @@ namespace TrueSync {
                 return _isGameStarted;
             }
         }
-        private Dictionary<uint, Actor> mActorDic = new Dictionary<uint, Actor>();
+        private Dictionary<int, Actor> mActorDic = new Dictionary<int, Actor>();
 
         private Transform mActorParent;
 
@@ -113,23 +113,51 @@ namespace TrueSync {
             _isLoginGameServer = false;
         }
         //====================================================
-        public void AddActor(uint tUserid, Actor tActor)
+		public void AddPlayerActor(int iOwnerID, Actor tActor)
         {
-            mActorDic[tUserid] = tActor;
+			mActorDic[iOwnerID] = tActor;
         }
 
-        public void RemoveActor(uint tUserid)
+		public void RemovePlayerActor(int iOwnerID)
         {
-            Destroy(mActorDic[tUserid].gameObject);
-            mActorDic.Remove(tUserid);
+			Destroy(mActorDic[iOwnerID].gameObject);
+			mActorDic.Remove(iOwnerID);
         }
 
-        public Actor GetActor(uint tUserid)
+		public Actor GetPlayerActor(int iOwnerID)
         {
             Actor actor = null;
-            mActorDic.TryGetValue(tUserid, out actor);
+			mActorDic.TryGetValue(iOwnerID, out actor);
             return actor;
         }
+
+		public List<Actor> GetEnemyPlayerActorList(GameCamp OwnerCamp)
+		{
+			if (OwnerCamp == GameCamp.BLUE)
+				return GetFriendPlayerActorList(GameCamp.RED);
+			else
+				return GetFriendPlayerActorList(GameCamp.BLUE);
+		}
+
+		public List<Actor> GetFriendPlayerActorList(GameCamp OwnerCamp)
+		{
+			List<Actor> actors = new List<Actor>();
+			foreach (KeyValuePair<int, Actor> kv in mActorDic)
+			{
+				if (kv.Value.OwnerCamp == OwnerCamp) actors.Add(kv.Value);
+			}
+			return actors;
+		}
+
+		public List<Actor> GetAllPlayerActorList(GameCamp OwnerCamp)
+		{
+			List<Actor> actors = new List<Actor>();
+			foreach (KeyValuePair<int, Actor> kv in mActorDic)
+			{
+				actors.Add(kv.Value);
+			}
+			return actors;
+		}
         //====================================================
         public void AddOneFrame(uint frameindex, List<PB_PlayerFrame> list)
         {
@@ -481,8 +509,12 @@ namespace TrueSync {
                 actor.RotateTSTransform.LookAt(TSVector.left);
                 actor.AllTSTransform.LookAt(TSVector.left);
                 actor.Angle = new TSVector();
-                actor.Id = mFightPlayerInfo.Playeridx;
-                AddActor(mFightPlayerInfo.Playeridx, actor);
+				actor.OwnerID = mFightPlayerInfo.Playeridx;
+				if (actor.OwnerID % 2 == 0)//临时的阵营分配规则
+					actor.OwnerCamp = GameCamp.BLUE;
+				else
+					actor.OwnerCamp = GameCamp.RED;
+                AddPlayerActor(actor.OwnerID, actor);
             }
             OnBattleStart();
             //==========================================================================

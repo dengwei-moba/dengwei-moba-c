@@ -12,10 +12,7 @@ public class ActorAttr
     public FP Hp { 
         set
         {
-            if (value>HpMax) 
-                _hp = HpMax;
-            else
-                _hp = value;
+			_hp = TSMath.Max(0, TSMath.Min(value, HpMax));
         }
         get {
             return _hp;
@@ -29,7 +26,7 @@ public class ActorAttr
             if (_hpmax > value)
             {
                 _hp += value - _hpmax;
-                _hpmax = value;
+                _hpmax = value;javascript:;
             }
             else if (_hpmax < value)
             {
@@ -43,6 +40,7 @@ public class ActorAttr
             return _hpmax;
         }
     }
+	public bool IsDeath { get { return _hp <= 0; } }
 	public string Name;
 }
 
@@ -55,7 +53,7 @@ public abstract class Actor : TrueSyncBehaviour
     /// </summary>
     public ActorAttr mActorAttr = new ActorAttr();
 
-	public bool IsDeath { get{ return mActorAttr.Hp<=0;} }
+	public bool IsDeath { get { return mActorAttr.IsDeath; } }
 	/// <summary>
 	/// 血条显示
 	/// </summary>
@@ -103,8 +101,8 @@ public abstract class Actor : TrueSyncBehaviour
     public abstract void PlayerInputHandle_MoveStart();
     public abstract void PlayerInputHandle_MoveAngle(int inputAngleX, int inputAngleY);
     public abstract void PlayerInputHandle_MoveEnd();
-    public abstract void PlayerInputHandle_KeyUp(int inputKey);
-    public abstract void PlayerInputHandle_KeyDown(int inputKey);
+	public abstract void PlayerInputHandle_KeyUp(int inputKey, int TargetID);
+	public abstract void PlayerInputHandle_KeyDown(int inputKey, int TargetID);
 	public abstract void PlayerInputHandle_KeyAngle(int inputKey, int inputAngleX, int inputAngleY);
     public abstract void PlayerInputHandle_ClickXY(int inputPosX, int inputPosY);
 
@@ -129,6 +127,7 @@ public abstract class Actor : TrueSyncBehaviour
 	protected abstract void MoveCallBack_Skill_4(Vector2 tVec2);
 	protected abstract void EndMoveCallBack_Skill_4(Vector2 tVec2);
 
+	public abstract void AddHp(int hp, int iOwnerID);
 
     public void TransState(ActorStateType tStateType, params object[] param)
     {
@@ -151,8 +150,6 @@ public abstract class Actor : TrueSyncBehaviour
             }
         }
     }
-
-    public uint Id { set; get; }
 
     /// <summary>
     /// 模型

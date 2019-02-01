@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using UnityEngine;
+using Google.Protobuf;
 using TrueSync;
 
 namespace behaviac
@@ -30,12 +32,53 @@ namespace behaviac
 #if BEHAVIAC_NOT_USE_MONOBEHAVIOUR
     public class Agent
 #else
-	public class Agent : TrueSyncBehaviour
+	public class Agent : Actor
 #endif
-    {
-        #region State
+	{
+		#region Actor里面的数据
+		protected override void InitStateMachine(){ }
+		protected override void InitCurState(){ }
+		protected override void InitStateTransLimit(){ }
+		protected override void InitWillUsedPrefabs(){ }
+		protected override void InitSkill(){ }
 
-        public class State_t
+		public override void PlayerInputHandle(PB_ClientInput input) { }
+		public override void PlayerInputHandle_MoveStart() { }
+		public override void PlayerInputHandle_MoveAngle(int inputAngleX, int inputAngleY) { }
+		public override void PlayerInputHandle_MoveEnd() { }
+		public override void PlayerInputHandle_KeyUp(int inputKey, int TargetID) { }
+		public override void PlayerInputHandle_KeyDown(int inputKey, int TargetID) { }
+		public override void PlayerInputHandle_KeyAngle(int inputKey, int inputAngleX, int inputAngleY) { }
+		public override void PlayerInputHandle_ClickXY(int inputPosX, int inputPosY) { }
+
+		protected override void onUp_Skill_1() { }
+		protected override void onDown_Skill_1() { }
+		protected override void StartMoveCallBack_Skill_1() { }
+		protected override void MoveCallBack_Skill_1(Vector2 tVec2) { }
+		protected override void EndMoveCallBack_Skill_1(Vector2 tVec2) { }
+		protected override void onUp_Skill_2() { }
+		protected override void onDown_Skill_2() { }
+		protected override void StartMoveCallBack_Skill_2() { }
+		protected override void MoveCallBack_Skill_2(Vector2 tVec2) { }
+		protected override void EndMoveCallBack_Skill_2(Vector2 tVec2) { }
+		protected override void onUp_Skill_3() { }
+		protected override void onDown_Skill_3() { }
+		protected override void StartMoveCallBack_Skill_3() { }
+		protected override void MoveCallBack_Skill_3(Vector2 tVec2) { }
+		protected override void EndMoveCallBack_Skill_3(Vector2 tVec2) { }
+		protected override void onUp_Skill_4() { }
+		protected override void onDown_Skill_4() { }
+		protected override void StartMoveCallBack_Skill_4() { }
+		protected override void MoveCallBack_Skill_4(Vector2 tVec2) { }
+		protected override void EndMoveCallBack_Skill_4(Vector2 tVec2) { }
+
+		public override void AddHp(int hp, int iOwnerID) { }
+
+		#endregion Actor里面的数据
+
+		#region State
+
+		public class State_t
         {
             protected Variables m_vars = new Variables();
 

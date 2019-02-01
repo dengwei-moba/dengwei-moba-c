@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2155554171
+CRC: 4126059690
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -1587,3 +1587,9 @@ AssetBundleManifest:
         Dependency_0: prefab/effect/magical/sources/materials/flak1_mat
         Dependency_1: prefab/effect/magical/sources/materials/lighting2_mat
         Dependency_2: prefab/effect/magical/sources/materials/ring3_mat
+    Info_349:
+      Name: prefab/effect/bullet/houyibasebullet_prefab
+      Dependencies:
+        Dependency_0: prefab/effect/magical/sources/materials/fire1_mat
+        Dependency_1: prefab/effect/magical/sources/materials/flak1_mat
+        Dependency_2: prefab/effect/magical/sources/materials/smoke1_mat

@@ -45,7 +45,7 @@ public class PlayerActor : Actor
 	private int ScreenHeigth_Max = 880;
 
     public SplatManager splatManager;
-    public GameObject[] WillUsedPrefabs; 
+    public GameObject[] WillUsedPrefabs;
 
     protected override void InitStateMachine()
     {
@@ -104,10 +104,10 @@ public class PlayerActor : Actor
                 PlayerInputHandle_MoveEnd();
                 break;
             case InputType.KeyUp:
-                PlayerInputHandle_KeyUp(input.Key);
+				PlayerInputHandle_KeyUp(input.Key, input.TargetID);
                 break;
             case InputType.KeyDown:
-                PlayerInputHandle_KeyDown(input.Key);
+				PlayerInputHandle_KeyDown(input.Key, input.TargetID);
                 break;
             case InputType.KeyAngle:
 				PlayerInputHandle_KeyAngle(input.Key, input.AngleX, input.AngleY);
@@ -139,40 +139,40 @@ public class PlayerActor : Actor
         this.TransState(ActorStateType.Idle);
     }
 
-    public override void PlayerInputHandle_KeyUp(int inputKey)
+	public override void PlayerInputHandle_KeyUp(int inputKey, int TargetID)
     {
         switch (inputKey)
         {
             case 1:
-                this.TransState(ActorStateType.Skill_1);
+				this.TransState(ActorStateType.Skill_1, TargetID);
                 break;
             case 2:
-                this.TransState(ActorStateType.Skill_2);
+				this.TransState(ActorStateType.Skill_2, TargetID);
                 break;
             case 3:
-                this.TransState(ActorStateType.Skill_3);
+				this.TransState(ActorStateType.Skill_3, TargetID);
                 break;
             case 4:
-                this.TransState(ActorStateType.Skill_4);
+				this.TransState(ActorStateType.Skill_4, TargetID);
                 break;
         }
     }
 
-    public override void PlayerInputHandle_KeyDown(int inputKey)
+    public override void PlayerInputHandle_KeyDown(int inputKey, int TargetID)
     {
         switch (inputKey)
         {
             case 1:
-                this.TransState(ActorStateType.Idle);
+				this.TransState(ActorStateType.Idle, TargetID);
                 break;
             case 2:
-                this.TransState(ActorStateType.Idle);
+				this.TransState(ActorStateType.Idle, TargetID);
                 break;
             case 3:
-                this.TransState(ActorStateType.Idle);
+				this.TransState(ActorStateType.Idle, TargetID);
                 break;
             case 4:
-                this.TransState(ActorStateType.Idle);
+				this.TransState(ActorStateType.Idle, TargetID);
                 break;
         }
     }
@@ -411,6 +411,114 @@ public class PlayerActor : Actor
 			return true;
 		return false;
 	}
+	/// <summary>
+	/// 根据选择策略,选择不同目标
+	/// </summary>
+	protected int SelectTargetActor(SelectTargetTactics iTactics, int iDistanceRange)
+	{ 
+		int TargetID = 0;
+		FP NearestDistance = 0;	//最近距离
+		FP LowestHp = 0;		//最低血量
+		if (iTactics == SelectTargetTactics.ENEMY_GUAI_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE
+			|| iTactics == SelectTargetTactics.ENEMY_ALL_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE)
+		{
+			//=====野怪
+			List<Actor> mEnemyMonsterActorList = GameProcessManager_Dota.Instance.GetMonsterActorList();
+			foreach (Actor mEnemyMonsterActor in mEnemyMonsterActorList) {
+				if (mEnemyMonsterActor.IsDeath) continue;
+				FP Distance = (mEnemyMonsterActor.AllTSTransform.position - AllTSTransform.position).magnitude;
+				if (iDistanceRange != -1 && Distance > iDistanceRange) continue;
+				switch (iTactics)
+				{
+					case SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE:
+					case SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE:
+						if (Distance > NearestDistance)
+						{
+							NearestDistance = Distance;
+							TargetID = mEnemyMonsterActor.OwnerID;
+						}
+						break;
+					case SelectTargetTactics.ENEMY_GUAI_LOWEST_HP:
+					case SelectTargetTactics.ENEMY_ALL_LOWEST_HP:
+						if (mEnemyMonsterActor.mActorAttr.Hp > LowestHp)
+						{
+							LowestHp = mEnemyMonsterActor.mActorAttr.Hp;
+							TargetID = mEnemyMonsterActor.OwnerID;
+						}
+						break;
+				}
+			}
+			//=====士兵
+			List<Actor> mEnemySoldiersActorList = GameProcessManager_Dota.Instance.GetEnemySoldiersActorList(OwnerCamp);
+			foreach (Actor mEnemySoldiersActor in mEnemySoldiersActorList)
+			{
+				if (mEnemySoldiersActor.IsDeath) continue;
+				FP Distance = (mEnemySoldiersActor.AllTSTransform.position - AllTSTransform.position).magnitude;
+				if (iDistanceRange != -1 && Distance > iDistanceRange) continue;
+				switch (iTactics)
+				{
+					case SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE:
+					case SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE:
+						if (Distance > NearestDistance)
+						{
+							NearestDistance = Distance;
+							TargetID = mEnemySoldiersActor.OwnerID;
+						}
+						break;
+					case SelectTargetTactics.ENEMY_GUAI_LOWEST_HP:
+					case SelectTargetTactics.ENEMY_ALL_LOWEST_HP:
+						if (mEnemySoldiersActor.mActorAttr.Hp > LowestHp)
+						{
+							LowestHp = mEnemySoldiersActor.mActorAttr.Hp;
+							TargetID = mEnemySoldiersActor.OwnerID;
+						}
+						break;
+				}
+			}
+			if (TargetID != 0 && (iTactics == SelectTargetTactics.ENEMY_GUAI_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE))
+			{
+				return TargetID;
+			}
+		}
+		//=====玩家
+		List<Actor> mEnemyPlayerActorList;
+		if (iTactics == SelectTargetTactics.FRIEND_PALYER_LOWEST_HP || iTactics == SelectTargetTactics.FRIEND_PALYER_NEAREST_DISTANCE)
+			mEnemyPlayerActorList = TrueSyncManager.Instance.GetFriendPlayerActorList(OwnerCamp);
+		else if (iTactics == SelectTargetTactics.ENEMY_PALYER_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_PALYER_NEAREST_DISTANCE)
+			mEnemyPlayerActorList = TrueSyncManager.Instance.GetEnemyPlayerActorList(OwnerCamp);
+		else
+			mEnemyPlayerActorList = TrueSyncManager.Instance.GetAllPlayerActorList(OwnerCamp);
+
+		foreach (Actor mEnemyPlayerActor in mEnemyPlayerActorList) {
+			if (mEnemyPlayerActor.IsDeath) continue;
+			FP Distance = (mEnemyPlayerActor.AllTSTransform.position - AllTSTransform.position).magnitude;
+			if (iDistanceRange!=-1 && Distance>iDistanceRange) continue;
+			switch(iTactics)
+			{
+				case SelectTargetTactics.FRIEND_PALYER_NEAREST_DISTANCE:
+				case SelectTargetTactics.ENEMY_PALYER_NEAREST_DISTANCE:
+				case SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE:
+				case SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE:
+					if (Distance > NearestDistance)
+					{
+						NearestDistance = Distance;
+						TargetID = mEnemyPlayerActor.OwnerID;
+					}
+					break;
+				case SelectTargetTactics.FRIEND_PALYER_LOWEST_HP:
+				case SelectTargetTactics.ENEMY_PALYER_LOWEST_HP:
+				case SelectTargetTactics.ENEMY_GUAI_LOWEST_HP:
+				case SelectTargetTactics.ENEMY_ALL_LOWEST_HP:
+					if (mEnemyPlayerActor.mActorAttr.Hp > LowestHp)
+					{
+						LowestHp = mEnemyPlayerActor.mActorAttr.Hp;
+						TargetID = mEnemyPlayerActor.OwnerID;
+					}
+					break;
+			}
+		}
+		return TargetID;
+	}
     //===========================================================================
 	protected override void onUp_Skill_1() { }
 	protected override void onDown_Skill_1() { }
@@ -571,6 +679,11 @@ public class PlayerActor : Actor
     }
 	***/
     //===========================================================================
+
+	public override void AddHp(int hp, int iOwnerID)
+	{
+		mActorAttr.Hp -= 10;
+	}
 
     void OnDestroy()
     {

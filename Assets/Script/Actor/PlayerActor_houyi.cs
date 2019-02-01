@@ -26,15 +26,15 @@ public class GameState_Skill_1_houyi : ActorState
 
     public override void Enter(params object[] param)
     {
-        mActor = param[0] as Actor;
-        if (mActor != null && mActor.ActorObj != null)
-        {
-            if (mActor.ActorAnimation != null)
-            {
-                mActor.ActorAnimation.wrapMode = WrapMode.Loop;
-                mActor.ActorAnimation.Play("skill1");
-            }
-        }
+		mActor = param[0] as Actor;
+		//if (mActor != null && mActor.ActorObj != null)
+		//{
+		//	if (mActor.ActorAnimation != null)
+		//	{
+		//		mActor.ActorAnimation.wrapMode = WrapMode.Loop;
+		//		mActor.ActorAnimation.Play("skill1");
+		//	}
+		//}
     }
 
     public override void Exit(ActorState NextGameState)
@@ -63,7 +63,7 @@ public class GameState_Skill_2_houyi : ActorState
 	{
 		get
 		{
-			return ActorStateType.Skill_1;
+			return ActorStateType.Skill_2;
 		}
 	}
 
@@ -121,7 +121,7 @@ public class GameState_Skill_3_houyi : ActorState
 	{
 		get
 		{
-			return ActorStateType.Skill_1;
+			return ActorStateType.Skill_3;
 		}
 	}
 
@@ -166,6 +166,68 @@ public class GameState_Skill_3_houyi : ActorState
 		}
 	}
 }
+
+public class GameState_Skill_4_houyi : ActorState
+{
+	private Actor mActor;
+	private int PlayAnimationFrame = 1;
+	private int PlayAnimationFrameInterval = 16;
+	private int _TargetID = 0;
+	private Actor mTargetActor;
+
+	public override ActorStateType StateType
+	{
+		get
+		{
+			return ActorStateType.Skill_4;
+		}
+	}
+
+	public override void TryTransState(ActorStateType tStateType)
+	{
+
+	}
+
+	public override void Enter(params object[] param)
+	{
+		mActor = param[0] as Actor;
+		object[] param2 = param[1] as object[];
+		_TargetID = (int)(param2[0]);
+		mTargetActor = GameProcessManager_Dota.Instance.GetGuaiActor(_TargetID);
+		Debug.LogErrorFormat("Skill_4_houyi Enter==========>{0},{1}", _TargetID, mTargetActor.OwnerID);
+	}
+
+	public override void Exit(ActorState NextGameState)
+	{
+		mActor = null;
+		mTargetActor = null;
+		PlayAnimationFrame = 1;
+		_TargetID = 0;
+	}
+
+	public override void OnUpdate()
+	{
+		PlayAnimationFrame++;
+		if (PlayAnimationFrame % PlayAnimationFrameInterval != 0) return;
+		if (mActor != null && mActor.ActorObj != null && mTargetActor!= null)
+		{
+			//先转身
+			TSVector mTSVector = (mTargetActor.AllTSTransform.position - mActor.AllTSTransform.position).normalized;
+			mActor.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
+			if (mActor.ActorAnimation != null)
+			{
+				mActor.ActorAnimation.wrapMode = WrapMode.Loop;
+				mActor.ActorAnimation.Play("skill1");
+			}
+			
+			if (mTargetActor==null)
+				mActor.TransState(ActorStateType.Idle);
+			else
+				mActor.Skill_4(mTargetActor);
+		}
+	}
+}
+
 public class PlayerActor_houyi : PlayerActor
 {
     public static FixedPointF mRenderFrameRate = new FixedPointF(1000, 1000);
@@ -177,18 +239,31 @@ public class PlayerActor_houyi : PlayerActor
         mStateMachineDic[ActorStateType.Skill_1] = new GameState_Skill_1_houyi();
 		mStateMachineDic[ActorStateType.Skill_2] = new GameState_Skill_2_houyi();
 		mStateMachineDic[ActorStateType.Skill_3] = new GameState_Skill_3_houyi();
+		mStateMachineDic[ActorStateType.Skill_4] = new GameState_Skill_4_houyi();
     }
 
     protected override void InitWillUsedPrefabs()
     {
-        WillUsedPrefabs = new GameObject[3];
+        WillUsedPrefabs = new GameObject[4];
 		WillUsedPrefabs[0] = _AssetManager.GetGameObject("prefab/effect/bullet/houyi_pengzhuang_prefab");
+
 		WillUsedPrefabs[1] = _AssetManager.GetGameObject("prefab/effect/bullet/houyibullet_prefab");
-		houyiBullet houyibullethouyiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
-		houyibullethouyiBullet.ownerIndex = (int)Id;
+		houyiBullet mHouYiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
+		mHouYiBullet.OwnerCamp = OwnerCamp;
+		mHouYiBullet.OwnerID = OwnerID;
 		WillUsedPrefabs[1].SetActive(false);
+
 		WillUsedPrefabs[2] = _AssetManager.GetGameObject("prefab/effect/magical/fx/dark_area_prefab");
+		houyiDarkArea mHouYiDarkArea = WillUsedPrefabs[2].GetComponent<houyiDarkArea>();
+		mHouYiDarkArea.OwnerCamp = OwnerCamp;
+		mHouYiDarkArea.OwnerID = OwnerID;
 		WillUsedPrefabs[2].SetActive(false);
+
+		WillUsedPrefabs[3] = _AssetManager.GetGameObject("prefab/effect/bullet/houyibasebullet_prefab");
+		houyiBaseBullet mHouYiBaseBullet = WillUsedPrefabs[3].GetComponent<houyiBaseBullet>();
+		mHouYiBaseBullet.OwnerCamp = OwnerCamp;
+		mHouYiBaseBullet.OwnerID = OwnerID;
+		WillUsedPrefabs[3].SetActive(false);
     }
 	//================================技能实现效果相关===========================================
 	public override void Skill_1(params object[] param)  //闪现
@@ -293,13 +368,22 @@ public class PlayerActor_houyi : PlayerActor
 		//houyibullethouyiBullet.AllTSTransform.position = new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z);
 		//houyibullethouyiBullet.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
 		//houyibullethouyiBullet.Angle = mTSVector;
-		Debug.LogErrorFormat("Skill_3远程箭==========>{0},{1},{2},ownerIndex={3}", inputAngleX, inputAngleY, mTSVector, Id);
+		Debug.LogErrorFormat("Skill_3远程箭==========>{0},{1},{2},OwnerID={3}", inputAngleX, inputAngleY, mTSVector, OwnerID);
 		GameObject realObj = TrueSyncManager.SyncedInstantiate(WillUsedPrefabs[1], new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z), TSQuaternion.identity);
 		realObj.SetActive(true);
 		houyiBullet houyibullethouyiBullet2 = realObj.GetComponent<houyiBullet>();
 		houyibullethouyiBullet2.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
 		houyibullethouyiBullet2.Angle = mTSVector;
 		
+	}
+	public override void Skill_4(params object[] param)  //普攻箭
+	{
+		Actor mTargetActor = param[0] as Actor;
+		GameObject houyibasebullet_prefab = TrueSyncManager.SyncedInstantiate(WillUsedPrefabs[3], new TSVector(AllTSTransform.position.x, 0, AllTSTransform.position.z), TSQuaternion.identity);
+		houyibasebullet_prefab.SetActive(true);
+		houyiBaseBullet mYeGuaiBaseBullet = houyibasebullet_prefab.GetComponent<houyiBaseBullet>();
+		mYeGuaiBaseBullet.mTargetEnemyActor = mTargetActor;
+		Debug.LogErrorFormat("Skill_4普攻箭==========>OwnerID={0},TargetOwnerID={1}", OwnerID, mTargetActor.OwnerID);
 	}
 	//================================技能本地操作相关===========================================
     protected override void InitSkill()
@@ -395,7 +479,11 @@ public class PlayerActor_houyi : PlayerActor
 	{
 		splatManager.CancelAll();
 		if (SkillControlType_4 == SkillControlType.Button_KeyUp)
-			_UdpSendManager.SendInputSkill(4, InputType.KeyUp);
+		{
+			int TargetID = SelectTargetActor(SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE,10);
+			//Debug.LogErrorFormat("onUp_Skill_4==========>{0}", TargetID);
+			_UdpSendManager.SendInputSkill(4, InputType.KeyUp, TargetID);
+		}
 	}
 	protected override void onDown_Skill_4()
 	{

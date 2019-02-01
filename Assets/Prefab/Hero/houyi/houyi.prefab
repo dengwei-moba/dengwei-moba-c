@@ -1590,6 +1590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerIndex: -1
+  OwnerID: 0
+  OwnerCamp: 1
+  mActerType: 1
   owner:
     id: 0
     name: 

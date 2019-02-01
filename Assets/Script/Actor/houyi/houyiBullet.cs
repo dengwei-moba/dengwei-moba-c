@@ -53,27 +53,6 @@ public class houyiBullet : TrueSyncBehaviour
     }
 
 	#region TrueSyncBehaviour操作相关
-	public override void OnSyncedStart()
-	{
-		Debug.LogErrorFormat("houyiBullet====>OnSyncedStart");
-	}
-
-	public void OnSyncedCollisionEnter(TSCollision other)
-	{
-		//other.gameObject.GetComponent<Renderer>().material.color = Color.gray;
-		Debug.LogErrorFormat("houyiBullet====>Collision   Enter==>{0}", other.gameObject.name);
-	}
-
-	public void OnSyncedCollisionStay(TSCollision other)
-	{
-		Debug.LogErrorFormat("houyiBullet====>Collision   Stay==>{0}", other.gameObject.name);
-	}
-
-	public void OnSyncedCollisionExit(TSCollision other)
-	{
-		//other.gameObject.GetComponent<Renderer>().material.color = Color.blue;
-		Debug.LogErrorFormat("houyiBullet====>Collision   Exit==>{0}", other.gameObject.name);
-	}
 
 	public void OnSyncedTriggerEnter(TSCollision other)
 	{
@@ -82,8 +61,8 @@ public class houyiBullet : TrueSyncBehaviour
 		if (otherLayerMask == LayerMask.GetMask("Role"))
 		{
 			Actor mActor = other.gameObject.GetComponent<Actor>();
-			Debug.LogErrorFormat("houyiBullet====>TriggerEnter==>自己ownerIndex:{0},对方mActor.Id={1}", ownerIndex, (int)mActor.Id);
-			if (ownerIndex != (int)mActor.Id)
+			Debug.LogErrorFormat("houyiBullet====>TriggerEnter==>自己阵营:{0},对方阵营={1}", OwnerCamp, mActor.OwnerCamp);
+			if (OwnerCamp != mActor.OwnerCamp)
 			{
 				mActor.mActorAttr.Hp -= 10;
 				TrueSyncManager.SyncedDestroy(gameObject);
@@ -92,7 +71,7 @@ public class houyiBullet : TrueSyncBehaviour
 		else if (otherLayerMask == LayerMask.GetMask("Monsters"))
 		{
 			YeGuaiAI mYeGuaiAI = other.gameObject.GetComponent<YeGuaiAI>();
-			mYeGuaiAI.AddHp(-10, ownerIndex);
+			mYeGuaiAI.AddHp(-10, OwnerID);
 		}
 		else if (otherLayerMask == LayerMask.GetMask("GroundWall"))
 		{

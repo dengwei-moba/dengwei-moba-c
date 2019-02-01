@@ -172,18 +172,6 @@ public class YeGuaiAI : behaviac.Agent
 
 ///<<< BEGIN WRITING YOUR CODE CLASS_PART
 	public bool ShowLog = false;
-	/// <summary>
-	/// 这个Actor身上所有的属性
-	/// </summary>
-	public ActorAttr mActorAttr = new ActorAttr();
-
-	/// <summary>
-	/// 这个Actor身上所有的Buff
-	/// </summary>
-	public ActorBuffManager mActorBuffManager = new ActorBuffManager();
-
-	public uint Id { set; get; }
-
 	public GameObject[] WillUsedPrefabs; 
 
 	private Dictionary<int,Actor> mEnemyActorDict;   //攻击了自己的所有敌人集合
@@ -193,60 +181,6 @@ public class YeGuaiAI : behaviac.Agent
 	public FP AttackDistance = (FP)5;
 	public FP OutRangDistance = (FP)10;
 	public FP BackPosition = (FP)15;
-
-	/// <summary>
-	/// 模型
-	/// </summary>
-	private GameObject mActorObj;
-	public GameObject ActorObj
-	{
-		get
-		{
-			if (mActorObj == null)
-				mActorObj = transform.Find("rotate/actor").gameObject;
-			return mActorObj;
-		}
-	}
-
-	private Animation mActorAnimation;
-	/// <summary>
-	/// 动画播放控件(控制一个动画的播放)
-	/// </summary>
-	public Animation ActorAnimation
-	{
-		get
-		{
-			if (mActorAnimation == null)
-				mActorAnimation = ActorObj.GetComponent<Animation>();
-			return mActorAnimation;
-		}
-	}
-
-	private TSTransform mRotateTSTransform;
-	public TSTransform RotateTSTransform
-	{
-		get
-		{
-			if (mRotateTSTransform == null)
-			{
-				mRotateTSTransform = transform.Find("rotate").transform.GetComponent<TSTransform>();
-			}
-			return mRotateTSTransform;
-		}
-	}
-
-	private TSTransform mAllTSTransform;
-	public TSTransform AllTSTransform
-	{
-		get
-		{
-			if (mAllTSTransform == null)
-			{
-				mAllTSTransform = GetComponent<TSTransform>();
-			}
-			return mAllTSTransform;
-		}
-	}
 
 	behaviac.EBTStatus _status = behaviac.EBTStatus.BT_RUNNING;
 
@@ -307,7 +241,7 @@ public class YeGuaiAI : behaviac.Agent
 	/// <summary>
 	/// 初始化可能被频繁用到的预制体(因为常用,让他一直在内存里)
 	/// </summary>
-	protected void InitWillUsedPrefabs()
+	protected override void InitWillUsedPrefabs()
 	{
 		BloodStrip bloodStrip = transform.gameObject.AddComponent<BloodStrip>();
 		bloodStrip.InitBloodStrip(mActorAttr);
@@ -325,20 +259,23 @@ public class YeGuaiAI : behaviac.Agent
         }
 		AllTSTransform.OnUpdate();
 		RotateTSTransform.OnUpdate();
+		if (mActorAttr.IsDeath) {
+			TrueSyncManager.SyncedDestroy(gameObject);
+		}
     }
 
-	public void AddHp(int hp, int ownerIndex)
+	public override void AddHp(int hp, int iOwnerID)
 	{
 		mActorAttr.Hp -= 10;
-		Actor mEnemyActor = TrueSyncManager.Instance.GetActor((uint)ownerIndex);
+		Actor mEnemyActor = TrueSyncManager.Instance.GetPlayerActor(iOwnerID);
 		if (mEnemyActor == null)
 		{
 			if (ShowLog) Debug.LogWarning("AddHp==>no EnemyActor");
 		}
 		else {
-			if (!mEnemyActorDict.ContainsKey(ownerIndex))
+			if (!mEnemyActorDict.ContainsKey(iOwnerID))
 			{
-				mEnemyActorDict[ownerIndex] = mEnemyActor;
+				mEnemyActorDict[iOwnerID] = mEnemyActor;
 			}
 		}
 	}

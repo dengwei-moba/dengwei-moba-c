@@ -511,14 +511,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerIndex: -1
+  OwnerID: 0
+  OwnerCamp: 4
+  mActerType: 3
   owner:
     id: 0
     name: 
+  pengzhuanweizhi: {fileID: 0}
+  pengzhuanfaxiangliang1: {fileID: 0}
+  pengzhuanfaxiangliang2: {fileID: 0}
+  pengzhuanfaxiangliang3: {fileID: 0}
   m_priority: 0
   m_contextId: 0
   m_debug_in_exec: 0
   m_debug_count: 0
   ShowLog: 0
+  WillUsedPrefabs: []
   mBackPosition:
     x:
       _serializedValue: 0
@@ -526,3 +534,9 @@ MonoBehaviour:
       _serializedValue: 4294967296
     z:
       _serializedValue: 0
+  AttackDistance:
+    _serializedValue: 21474836480
+  OutRangDistance:
+    _serializedValue: 42949672960
+  BackPosition:
+    _serializedValue: 64424509440

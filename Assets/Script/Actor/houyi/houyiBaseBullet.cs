@@ -6,7 +6,7 @@ using UnityEngine;
 using Google.Protobuf;
 using TrueSync;
 
-public class yeguaiBullet : TrueSyncBehaviour
+public class houyiBaseBullet : TrueSyncBehaviour
 {
 	private TSTransform mRotateTSTransform;
 	public TSTransform RotateTSTransform
@@ -47,13 +47,13 @@ public class yeguaiBullet : TrueSyncBehaviour
 	{
 		if (mTargetEnemyActor==null) return;
 		TSVector DistanceAngle = mTargetEnemyActor.AllTSTransform.position - AllTSTransform.position;
-		//Debug.LogErrorFormat("yeguaiBullet====>{0},{1},{2},{3}", mTargetEnemyActor.AllTSTransform.position, AllTSTransform.position, DistanceAngle, DistanceAngle.magnitude);
+		//Debug.LogErrorFormat("houyiBaseBullet====>{0},{1},{2},{3}", mTargetEnemyActor.AllTSTransform.position, AllTSTransform.position, DistanceAngle, DistanceAngle.magnitude);
 		
 		TSVector Angle = DistanceAngle.normalized;
 		AllTSTransform.Translate(Angle * Speed);
 		AllTSTransform.OnUpdate();
 		//RotateTSTransform.OnUpdate();
-		//Debug.LogErrorFormat("yeguaiBullet====>{0},{1},{2}",ownerIndex, Angle, RotateTSTransform.rotation.eulerAngles);
+		//Debug.LogErrorFormat("houyiBaseBullet====>{0},{1},{2}",ownerIndex, Angle, RotateTSTransform.rotation.eulerAngles);
 		if (DistanceAngle.magnitude <= 1)
 		{
 			OnHitEnemyActor();
@@ -62,7 +62,7 @@ public class yeguaiBullet : TrueSyncBehaviour
 
 	private void OnHitEnemyActor(){
 		//Debug.LogErrorFormat("OnHitEnemyActor====>");
-		mTargetEnemyActor.mActorAttr.Hp -= 3;
+		mTargetEnemyActor.AddHp(-3, OwnerID);
 		mTargetEnemyActor = null;
 		TrueSyncManager.SyncedDestroy(gameObject);
 	}
