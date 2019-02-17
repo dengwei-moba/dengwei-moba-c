@@ -47,7 +47,7 @@ public class GameState_Skill_1_houyi : ActorState
         if (mActor != null && mActor.ActorObj != null)
         {
             mActor.Skill_1();
-            mActor.TransState(ActorStateType.Idle);
+			mActor.TryBackMove();
         }
     }
 }
@@ -105,7 +105,7 @@ public class GameState_Skill_2_houyi : ActorState
 		{
 			mActor.Skill_2(inputAngleX, inputAngleY, PlayAnimationFrame);
 			if (PlayAnimationFrame<=0)
-				mActor.TransState(ActorStateType.Idle);
+				mActor.TryBackMove();
 		}
 	}
 }
@@ -140,7 +140,11 @@ public class GameState_Skill_3_houyi : ActorState
 		if (mActor != null && mActor.ActorObj != null)
 		{
 			//先转身
-			TSVector mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
+			TSVector mTSVector;
+			if (inputAngleX == 0 && inputAngleY == 0)
+				mTSVector = new TSVector(mActor.Angle.x, FP.Zero, mActor.Angle.z);
+			else
+				mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
 			mActor.RotateTSTransform.rotation = TSQuaternion.LookRotation(mTSVector);
 			if (mActor.ActorAnimation != null)
 			{
@@ -162,7 +166,7 @@ public class GameState_Skill_3_houyi : ActorState
 		if (mActor != null && mActor.ActorObj != null && PlayAnimationFrame<=0)
 		{
 			mActor.Skill_3(inputAngleX, inputAngleY);
-			mActor.TransState(ActorStateType.Idle);
+			mActor.TryBackMove();
 		}
 	}
 }
@@ -170,7 +174,7 @@ public class GameState_Skill_3_houyi : ActorState
 public class GameState_Skill_4_houyi : ActorState
 {
 	private Actor mActor;
-	private int PlayAnimationFrame = 1;
+	private int PlayAnimationFrame = 0;
 	private int PlayAnimationFrameInterval = 16;
 	private int _TargetID = 0;
 	private Actor mTargetActor;
@@ -201,15 +205,15 @@ public class GameState_Skill_4_houyi : ActorState
 	{
 		mActor = null;
 		mTargetActor = null;
-		PlayAnimationFrame = 1;
+		PlayAnimationFrame = 0;
 		_TargetID = 0;
 	}
 
 	public override void OnUpdate()
 	{
 		PlayAnimationFrame++;
-		if (PlayAnimationFrame % PlayAnimationFrameInterval != 0) return;
-		if (mActor != null && mActor.ActorObj != null && mTargetActor!= null)
+		if (PlayAnimationFrame % PlayAnimationFrameInterval != 1) return;
+		if (mActor != null && mActor.ActorObj != null && mTargetActor != null)
 		{
 			//先转身
 			TSVector mTSVector = (mTargetActor.AllTSTransform.position - mActor.AllTSTransform.position).normalized;
@@ -219,11 +223,14 @@ public class GameState_Skill_4_houyi : ActorState
 				mActor.ActorAnimation.wrapMode = WrapMode.Loop;
 				mActor.ActorAnimation.Play("skill1");
 			}
-			
-			if (mTargetActor==null)
-				mActor.TransState(ActorStateType.Idle);
+
+			if (mTargetActor.IsDeath)
+				mActor.TryBackMove();
 			else
 				mActor.Skill_4(mTargetActor);
+		}
+		else {
+			mActor.TryBackMove();
 		}
 	}
 }
@@ -361,8 +368,12 @@ public class PlayerActor_houyi : PlayerActor
 	public override void Skill_3(params object[] param)  //远程箭
 	{
 		int inputAngleX = Convert.ToInt32(param[0]);
-		int inputAngleY = Convert.ToInt32(param[1]);		
-		TSVector mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
+		int inputAngleY = Convert.ToInt32(param[1]);
+		TSVector mTSVector;
+		if (inputAngleX == 0 && inputAngleY == 0)
+			mTSVector = new TSVector(Angle.x, FP.Zero, Angle.z);
+		else
+			mTSVector = new TSVector((FP)inputAngleX / 1000, FP.Zero, (FP)inputAngleY / 1000);
 		//houyiBullet houyibullethouyiBullet = WillUsedPrefabs[1].GetComponent<houyiBullet>();
 		//houyibullethouyiBullet.ownerIndex = (int)Id;
 		//houyibullethouyiBullet.AllTSTransform.position = new TSVector(AllTSTransform.position.x, 1, AllTSTransform.position.z);
@@ -445,7 +456,7 @@ public class PlayerActor_houyi : PlayerActor
 		if (!IsInQuXiaoArea(tVec2))
 			_UdpSendManager.SendAngleSkill(2, Convert.ToInt32(mCone.JoystickVector.x * 1000), Convert.ToInt32(mCone.JoystickVector.z * 1000));
 		splatManager.CancelAll();
-		Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
+		//Debug.LogErrorFormat("EndMoveCallBack_Skill_2==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
 	}
 	//=========================================
 	protected override void StartMoveCallBack_Skill_3()
@@ -472,7 +483,7 @@ public class PlayerActor_houyi : PlayerActor
 		if (!IsInQuXiaoArea(tVec2))
 			_UdpSendManager.SendAngleSkill(3, Convert.ToInt32(mCone.JoystickVector.x * 1000), Convert.ToInt32(mCone.JoystickVector.z * 1000));
 		splatManager.CancelAll();
-		Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
+		//Debug.LogErrorFormat("EndMoveCallBack_Skill_3==========>{0},在取消区域内:{1}", tVec2, IsInQuXiaoArea(tVec2));
 	}
 	//=========================================
 	protected override void onUp_Skill_4()

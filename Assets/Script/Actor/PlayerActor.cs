@@ -136,6 +136,7 @@ public class PlayerActor : Actor
 
     public override void PlayerInputHandle_MoveEnd()
     {
+		IsMove = false;
         this.TransState(ActorStateType.Idle);
     }
 
@@ -417,8 +418,8 @@ public class PlayerActor : Actor
 	protected int SelectTargetActor(SelectTargetTactics iTactics, int iDistanceRange)
 	{ 
 		int TargetID = 0;
-		FP NearestDistance = 0;	//最近距离
-		FP LowestHp = 0;		//最低血量
+		FP NearestDistance = 99;//最近距离
+		FP LowestHp = 99999;	//最低血量
 		if (iTactics == SelectTargetTactics.ENEMY_GUAI_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE
 			|| iTactics == SelectTargetTactics.ENEMY_ALL_LOWEST_HP || iTactics == SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE)
 		{
@@ -432,7 +433,7 @@ public class PlayerActor : Actor
 				{
 					case SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE:
 					case SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE:
-						if (Distance > NearestDistance)
+						if (Distance < NearestDistance)
 						{
 							NearestDistance = Distance;
 							TargetID = mEnemyMonsterActor.OwnerID;
@@ -440,7 +441,7 @@ public class PlayerActor : Actor
 						break;
 					case SelectTargetTactics.ENEMY_GUAI_LOWEST_HP:
 					case SelectTargetTactics.ENEMY_ALL_LOWEST_HP:
-						if (mEnemyMonsterActor.mActorAttr.Hp > LowestHp)
+						if (mEnemyMonsterActor.mActorAttr.Hp < LowestHp)
 						{
 							LowestHp = mEnemyMonsterActor.mActorAttr.Hp;
 							TargetID = mEnemyMonsterActor.OwnerID;
@@ -459,7 +460,7 @@ public class PlayerActor : Actor
 				{
 					case SelectTargetTactics.ENEMY_GUAI_NEAREST_DISTANCE:
 					case SelectTargetTactics.ENEMY_ALL_NEAREST_DISTANCE:
-						if (Distance > NearestDistance)
+						if (Distance < NearestDistance)
 						{
 							NearestDistance = Distance;
 							TargetID = mEnemySoldiersActor.OwnerID;
@@ -467,7 +468,7 @@ public class PlayerActor : Actor
 						break;
 					case SelectTargetTactics.ENEMY_GUAI_LOWEST_HP:
 					case SelectTargetTactics.ENEMY_ALL_LOWEST_HP:
-						if (mEnemySoldiersActor.mActorAttr.Hp > LowestHp)
+						if (mEnemySoldiersActor.mActorAttr.Hp < LowestHp)
 						{
 							LowestHp = mEnemySoldiersActor.mActorAttr.Hp;
 							TargetID = mEnemySoldiersActor.OwnerID;
